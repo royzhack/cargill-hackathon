@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d71aa34db885799f85aa1c3b16cc9566 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 200px; height: 90px; 
+     background-color: white; border:2px solid grey; z-index:9999; 
+     font-size:14px; padding: 10px">
+     <p><b>Cargo Routes</b></p>
+     <p><i class="fa fa-circle" style="color:blue"></i> Cargill Cargoes</p>
+     <p><i class="fa fa-circle" style="color:red"></i> Market Cargoes</p>
+</div>
+    
+            <div class="folium-map" id="map_d71aa34db885799f85aa1c3b16cc9566" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d71aa34db885799f85aa1c3b16cc9566 = L.map(
+                "map_d71aa34db885799f85aa1c3b16cc9566",
+                {
+                    center: [13.256666599999999, 68.86333334999999],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_40f21fe8e377e8863d3c3b37f914e08d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_40f21fe8e377e8863d3c3b37f914e08d.addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+            var circle_marker_025a170927cec318b820859798278d2d = L.circleMarker(
+                [10.633333, -14.616667],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_571db4f61994862a805c5f8f51e16e6e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_72a2eda80728f8e33377ab5b5154ea09 = $(`<div id="html_72a2eda80728f8e33377ab5b5154ea09" style="width: 100.0%; height: 100.0%;"><b>Cargill - Load Port</b><br>Route: West Africa – China<br>Port: Kamsar_Guinea<br>Commodity: Bauxite<br>Quantity: 180000 MT</div>`)[0];
+                popup_571db4f61994862a805c5f8f51e16e6e.setContent(html_72a2eda80728f8e33377ab5b5154ea09);
+            
+        
+
+        circle_marker_025a170927cec318b820859798278d2d.bindPopup(popup_571db4f61994862a805c5f8f51e16e6e)
+        ;
+
+        
+    
+    
+            circle_marker_025a170927cec318b820859798278d2d.bindTooltip(
+                `<div>
+                     Cargill Load: Kamsar_Guinea
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_35f9a94f9d53c5919d99202448c6c9f2 = L.circleMarker(
+                [36.033333, 120.266667],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_77c01072371424eb1752e78742638530 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e530b179e348afb5afae66b3e930a3b5 = $(`<div id="html_e530b179e348afb5afae66b3e930a3b5" style="width: 100.0%; height: 100.0%;"><b>Cargill - Discharge Port</b><br>Route: West Africa – China<br>Port: Qingdao_China<br>Commodity: Bauxite<br>Quantity: 180000 MT</div>`)[0];
+                popup_77c01072371424eb1752e78742638530.setContent(html_e530b179e348afb5afae66b3e930a3b5);
+            
+        
+
+        circle_marker_35f9a94f9d53c5919d99202448c6c9f2.bindPopup(popup_77c01072371424eb1752e78742638530)
+        ;
+
+        
+    
+    
+            circle_marker_35f9a94f9d53c5919d99202448c6c9f2.bindTooltip(
+                `<div>
+                     Cargill Discharge: Qingdao_China
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_625a213d4b162e79bded8619f9cd1e38 = L.polyline(
+                [[10.633333, -14.616667], [36.033333, 120.266667]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_64166138e5949ef325cbc526b52b5afa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7077d21f3a399a03a19c2ef81836ade9 = $(`<div id="html_7077d21f3a399a03a19c2ef81836ade9" style="width: 100.0%; height: 100.0%;">Cargill Route: West Africa – China</div>`)[0];
+                popup_64166138e5949ef325cbc526b52b5afa.setContent(html_7077d21f3a399a03a19c2ef81836ade9);
+            
+        
+
+        poly_line_625a213d4b162e79bded8619f9cd1e38.bindPopup(popup_64166138e5949ef325cbc526b52b5afa)
+        ;
+
+        
+    
+    
+            var circle_marker_ac65d6e595410ceb558eb20fc0163056 = L.circleMarker(
+                [-20.316667, 118.583333],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_7b5712bab9eb832116a208507f81cf52 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1eaeb7db239dd96eab01ca2259f2d445 = $(`<div id="html_1eaeb7db239dd96eab01ca2259f2d445" style="width: 100.0%; height: 100.0%;"><b>Cargill - Load Port</b><br>Route: Australia – China<br>Port: Port Hedland_Australia<br>Commodity: Iron Ore<br>Quantity: 160000 MT</div>`)[0];
+                popup_7b5712bab9eb832116a208507f81cf52.setContent(html_1eaeb7db239dd96eab01ca2259f2d445);
+            
+        
+
+        circle_marker_ac65d6e595410ceb558eb20fc0163056.bindPopup(popup_7b5712bab9eb832116a208507f81cf52)
+        ;
+
+        
+    
+    
+            circle_marker_ac65d6e595410ceb558eb20fc0163056.bindTooltip(
+                `<div>
+                     Cargill Load: Port Hedland_Australia
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_eca828d833248c4632a848778762ac59 = L.circleMarker(
+                [34.733333, 119.45],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_9bd68bfe5a6fd3d05f82ce4f5062d1f0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8257fbf54f2a19f7705b72bcd6af57dc = $(`<div id="html_8257fbf54f2a19f7705b72bcd6af57dc" style="width: 100.0%; height: 100.0%;"><b>Cargill - Discharge Port</b><br>Route: Australia – China<br>Port: Lianyungang_China<br>Commodity: Iron Ore<br>Quantity: 160000 MT</div>`)[0];
+                popup_9bd68bfe5a6fd3d05f82ce4f5062d1f0.setContent(html_8257fbf54f2a19f7705b72bcd6af57dc);
+            
+        
+
+        circle_marker_eca828d833248c4632a848778762ac59.bindPopup(popup_9bd68bfe5a6fd3d05f82ce4f5062d1f0)
+        ;
+
+        
+    
+    
+            circle_marker_eca828d833248c4632a848778762ac59.bindTooltip(
+                `<div>
+                     Cargill Discharge: Lianyungang_China
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_77ec78f4771f6c4330ba4c4f67e7a9fd = L.polyline(
+                [[-20.316667, 118.583333], [34.733333, 119.45]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_dbe6c32535daf38a7b6b09a70b702fcb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b617dca04f35b83d2ba3e881098c7b0c = $(`<div id="html_b617dca04f35b83d2ba3e881098c7b0c" style="width: 100.0%; height: 100.0%;">Cargill Route: Australia – China</div>`)[0];
+                popup_dbe6c32535daf38a7b6b09a70b702fcb.setContent(html_b617dca04f35b83d2ba3e881098c7b0c);
+            
+        
+
+        poly_line_77ec78f4771f6c4330ba4c4f67e7a9fd.bindPopup(popup_dbe6c32535daf38a7b6b09a70b702fcb)
+        ;
+
+        
+    
+    
+            var circle_marker_0e1239e74c776465845edfa1130646f9 = L.circleMarker(
+                [-5.083333, 39.116667],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_1028855e33ea499494340e67bf444ddf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c052571723b91116a4d415f5fee95227 = $(`<div id="html_c052571723b91116a4d415f5fee95227" style="width: 100.0%; height: 100.0%;"><b>Cargill - Load Port</b><br>Route: Brazil – China<br>Port: Itaguaí_Brazil<br>Commodity: Iron Ore<br>Quantity: 180000 MT</div>`)[0];
+                popup_1028855e33ea499494340e67bf444ddf.setContent(html_c052571723b91116a4d415f5fee95227);
+            
+        
+
+        circle_marker_0e1239e74c776465845edfa1130646f9.bindPopup(popup_1028855e33ea499494340e67bf444ddf)
+        ;
+
+        
+    
+    
+            circle_marker_0e1239e74c776465845edfa1130646f9.bindTooltip(
+                `<div>
+                     Cargill Load: Itaguaí_Brazil
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4caebce4cb63312a9fd613104c2edaf6 = L.circleMarker(
+                [36.033333, 120.266667],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_dc257f10cd0edfc1cfaf5ca6c4f24b47 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d138564213030b8d61ba0897d726bf86 = $(`<div id="html_d138564213030b8d61ba0897d726bf86" style="width: 100.0%; height: 100.0%;"><b>Cargill - Discharge Port</b><br>Route: Brazil – China<br>Port: Qingdao_China<br>Commodity: Iron Ore<br>Quantity: 180000 MT</div>`)[0];
+                popup_dc257f10cd0edfc1cfaf5ca6c4f24b47.setContent(html_d138564213030b8d61ba0897d726bf86);
+            
+        
+
+        circle_marker_4caebce4cb63312a9fd613104c2edaf6.bindPopup(popup_dc257f10cd0edfc1cfaf5ca6c4f24b47)
+        ;
+
+        
+    
+    
+            circle_marker_4caebce4cb63312a9fd613104c2edaf6.bindTooltip(
+                `<div>
+                     Cargill Discharge: Qingdao_China
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_873dd3eae98a065f8c1881d36fca933d = L.polyline(
+                [[-5.083333, 39.116667], [36.033333, 120.266667]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_f9ed03d23c1abec1511027bb35e78e55 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f5c12dff08c2ad7a68f66cb045126ce5 = $(`<div id="html_f5c12dff08c2ad7a68f66cb045126ce5" style="width: 100.0%; height: 100.0%;">Cargill Route: Brazil – China</div>`)[0];
+                popup_f9ed03d23c1abec1511027bb35e78e55.setContent(html_f5c12dff08c2ad7a68f66cb045126ce5);
+            
+        
+
+        poly_line_873dd3eae98a065f8c1881d36fca933d.bindPopup(popup_f9ed03d23c1abec1511027bb35e78e55)
+        ;
+
+        
+    
+    
+            var circle_marker_c18206f4ecc7d78ead75a653bc6ba6fe = L.circleMarker(
+                [-20.633333, 116.716667],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_3c45213ffecc9af57d92e18815fddacc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e2e3babe6dbd334dc982dae483e4847d = $(`<div id="html_e2e3babe6dbd334dc982dae483e4847d" style="width: 100.0%; height: 100.0%;"><b>Market - Load Port</b><br>Route: Australia – China (Iron Ore)<br>Port: Dampier_Australia<br>Commodity: Iron Ore<br>Quantity: 170000 MT</div>`)[0];
+                popup_3c45213ffecc9af57d92e18815fddacc.setContent(html_e2e3babe6dbd334dc982dae483e4847d);
+            
+        
+
+        circle_marker_c18206f4ecc7d78ead75a653bc6ba6fe.bindPopup(popup_3c45213ffecc9af57d92e18815fddacc)
+        ;
+
+        
+    
+    
+            circle_marker_c18206f4ecc7d78ead75a653bc6ba6fe.bindTooltip(
+                `<div>
+                     Market Load: Dampier_Australia
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4c0bef82740dd86aef447aab47b0cf60 = L.circleMarker(
+                [36.033333, 120.266667],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_4131f7b2f7afd77889cc12906b2ae339 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8f40949ce90b1bddba654ace80814ee3 = $(`<div id="html_8f40949ce90b1bddba654ace80814ee3" style="width: 100.0%; height: 100.0%;"><b>Market - Discharge Port</b><br>Route: Australia – China (Iron Ore)<br>Port: Qingdao_China<br>Commodity: Iron Ore<br>Quantity: 170000 MT</div>`)[0];
+                popup_4131f7b2f7afd77889cc12906b2ae339.setContent(html_8f40949ce90b1bddba654ace80814ee3);
+            
+        
+
+        circle_marker_4c0bef82740dd86aef447aab47b0cf60.bindPopup(popup_4131f7b2f7afd77889cc12906b2ae339)
+        ;
+
+        
+    
+    
+            circle_marker_4c0bef82740dd86aef447aab47b0cf60.bindTooltip(
+                `<div>
+                     Market Discharge: Qingdao_China
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_0747bb22da506565baa399b8937e38da = L.polyline(
+                [[-20.633333, 116.716667], [36.033333, 120.266667]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_0f312d1567c9a3e6bbf3ba8241769c05 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_35b859a69fe6f43fcbd670eea482a4b5 = $(`<div id="html_35b859a69fe6f43fcbd670eea482a4b5" style="width: 100.0%; height: 100.0%;">Market Route: Australia – China (Iron Ore)</div>`)[0];
+                popup_0f312d1567c9a3e6bbf3ba8241769c05.setContent(html_35b859a69fe6f43fcbd670eea482a4b5);
+            
+        
+
+        poly_line_0747bb22da506565baa399b8937e38da.bindPopup(popup_0f312d1567c9a3e6bbf3ba8241769c05)
+        ;
+
+        
+    
+    
+            var circle_marker_3a16cbd8c4e99cfdf8375d149f93ce20 = L.circleMarker(
+                [-33.033333, 17.966667],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_ddb163fbad576e674775d46d6f038dfe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74ad31cd5d79686fd6185b2b7e3199b1 = $(`<div id="html_74ad31cd5d79686fd6185b2b7e3199b1" style="width: 100.0%; height: 100.0%;"><b>Market - Load Port</b><br>Route: South Africa – China (Iron Ore)<br>Port: Saldanha Bay_South Africa<br>Commodity: Iron Ore<br>Quantity: 180000 MT</div>`)[0];
+                popup_ddb163fbad576e674775d46d6f038dfe.setContent(html_74ad31cd5d79686fd6185b2b7e3199b1);
+            
+        
+
+        circle_marker_3a16cbd8c4e99cfdf8375d149f93ce20.bindPopup(popup_ddb163fbad576e674775d46d6f038dfe)
+        ;
+
+        
+    
+    
+            circle_marker_3a16cbd8c4e99cfdf8375d149f93ce20.bindTooltip(
+                `<div>
+                     Market Load: Saldanha Bay_South Africa
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3328322b3023c6b7652c38b722289c1d = L.circleMarker(
+                [38.966667, 117.833333],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_8cd438b08803fc6cccd70e36d2fedf30 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_95f8f48a1393c595cf9e3557b51ad6bb = $(`<div id="html_95f8f48a1393c595cf9e3557b51ad6bb" style="width: 100.0%; height: 100.0%;"><b>Market - Discharge Port</b><br>Route: South Africa – China (Iron Ore)<br>Port: Tianjin_China<br>Commodity: Iron Ore<br>Quantity: 180000 MT</div>`)[0];
+                popup_8cd438b08803fc6cccd70e36d2fedf30.setContent(html_95f8f48a1393c595cf9e3557b51ad6bb);
+            
+        
+
+        circle_marker_3328322b3023c6b7652c38b722289c1d.bindPopup(popup_8cd438b08803fc6cccd70e36d2fedf30)
+        ;
+
+        
+    
+    
+            circle_marker_3328322b3023c6b7652c38b722289c1d.bindTooltip(
+                `<div>
+                     Market Discharge: Tianjin_China
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_aa76a8a2cba2eb05c0962c39f7e02ec7 = L.polyline(
+                [[-33.033333, 17.966667], [38.966667, 117.833333]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_f92005fc8c5fa980462223fc154faae5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64f114a0905453887718a83cc2654460 = $(`<div id="html_64f114a0905453887718a83cc2654460" style="width: 100.0%; height: 100.0%;">Market Route: South Africa – China (Iron Ore)</div>`)[0];
+                popup_f92005fc8c5fa980462223fc154faae5.setContent(html_64f114a0905453887718a83cc2654460);
+            
+        
+
+        poly_line_aa76a8a2cba2eb05c0962c39f7e02ec7.bindPopup(popup_f92005fc8c5fa980462223fc154faae5)
+        ;
+
+        
+    
+    
+            var circle_marker_1fb8243e91a3b1b7e80df46f86991554 = L.circleMarker(
+                [41.016667, 39.766667],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_60bab574920767fa776d6d3c915dc397 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_be157eebd27ba34ae0dde0d9c6db457b = $(`<div id="html_be157eebd27ba34ae0dde0d9c6db457b" style="width: 100.0%; height: 100.0%;"><b>Market - Load Port</b><br>Route: Indonesia – India (Coal)<br>Port: Taboneo_Indonesia<br>Commodity: Thermal Coal<br>Quantity: 150000 MT</div>`)[0];
+                popup_60bab574920767fa776d6d3c915dc397.setContent(html_be157eebd27ba34ae0dde0d9c6db457b);
+            
+        
+
+        circle_marker_1fb8243e91a3b1b7e80df46f86991554.bindPopup(popup_60bab574920767fa776d6d3c915dc397)
+        ;
+
+        
+    
+    
+            circle_marker_1fb8243e91a3b1b7e80df46f86991554.bindTooltip(
+                `<div>
+                     Market Load: Taboneo_Indonesia
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_168baf3d8f834d758fd35168d22fc7be = L.circleMarker(
+                [17.683333, 83.3],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_28eac905ccd711c0fb8a4d89b208371e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b66cb3d9bcd740b2863029932b40c51b = $(`<div id="html_b66cb3d9bcd740b2863029932b40c51b" style="width: 100.0%; height: 100.0%;"><b>Market - Discharge Port</b><br>Route: Indonesia – India (Coal)<br>Port: Krishnapatnam_India<br>Commodity: Thermal Coal<br>Quantity: 150000 MT</div>`)[0];
+                popup_28eac905ccd711c0fb8a4d89b208371e.setContent(html_b66cb3d9bcd740b2863029932b40c51b);
+            
+        
+
+        circle_marker_168baf3d8f834d758fd35168d22fc7be.bindPopup(popup_28eac905ccd711c0fb8a4d89b208371e)
+        ;
+
+        
+    
+    
+            circle_marker_168baf3d8f834d758fd35168d22fc7be.bindTooltip(
+                `<div>
+                     Market Discharge: Krishnapatnam_India
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_963fb63af4721f39081174130b217b88 = L.polyline(
+                [[41.016667, 39.766667], [17.683333, 83.3]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_3af21b0511c0acdd81ce78d9009810ef = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9233c281571c7d968817b781111a839e = $(`<div id="html_9233c281571c7d968817b781111a839e" style="width: 100.0%; height: 100.0%;">Market Route: Indonesia – India (Coal)</div>`)[0];
+                popup_3af21b0511c0acdd81ce78d9009810ef.setContent(html_9233c281571c7d968817b781111a839e);
+            
+        
+
+        poly_line_963fb63af4721f39081174130b217b88.bindPopup(popup_3af21b0511c0acdd81ce78d9009810ef)
+        ;
+
+        
+    
+    
+            var circle_marker_8229d1e59b95b7f9967dee9aacd48a59 = L.circleMarker(
+                [49.283333, -123.116667],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_ec2f40eccb9c213c14197e4f7afea3f4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3dbaef385ae56d76c969a966c283806b = $(`<div id="html_3dbaef385ae56d76c969a966c283806b" style="width: 100.0%; height: 100.0%;"><b>Market - Load Port</b><br>Route: Canada – China (Coking Coal)<br>Port: Vancouver_Canada<br>Commodity: Coking Coal<br>Quantity: 160000 MT</div>`)[0];
+                popup_ec2f40eccb9c213c14197e4f7afea3f4.setContent(html_3dbaef385ae56d76c969a966c283806b);
+            
+        
+
+        circle_marker_8229d1e59b95b7f9967dee9aacd48a59.bindPopup(popup_ec2f40eccb9c213c14197e4f7afea3f4)
+        ;
+
+        
+    
+    
+            circle_marker_8229d1e59b95b7f9967dee9aacd48a59.bindTooltip(
+                `<div>
+                     Market Load: Vancouver_Canada
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0cdc927054c5ce4f38cb4106675159e5 = L.circleMarker(
+                [21.75, 108.35],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_ade74a370e1c98869855c223ee3a0e2b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74f0c727fd4b8c05f86e3e3aca749fac = $(`<div id="html_74f0c727fd4b8c05f86e3e3aca749fac" style="width: 100.0%; height: 100.0%;"><b>Market - Discharge Port</b><br>Route: Canada – China (Coking Coal)<br>Port: Fangcheng_China<br>Commodity: Coking Coal<br>Quantity: 160000 MT</div>`)[0];
+                popup_ade74a370e1c98869855c223ee3a0e2b.setContent(html_74f0c727fd4b8c05f86e3e3aca749fac);
+            
+        
+
+        circle_marker_0cdc927054c5ce4f38cb4106675159e5.bindPopup(popup_ade74a370e1c98869855c223ee3a0e2b)
+        ;
+
+        
+    
+    
+            circle_marker_0cdc927054c5ce4f38cb4106675159e5.bindTooltip(
+                `<div>
+                     Market Discharge: Fangcheng_China
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_512732d12c477e1c0b5b8639abf6011d = L.polyline(
+                [[49.283333, -123.116667], [21.75, 108.35]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_bf0d6008bd004b33b96c22aa21e872e3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e2deca7f90c81d6f1cb82c18b8be3c1 = $(`<div id="html_2e2deca7f90c81d6f1cb82c18b8be3c1" style="width: 100.0%; height: 100.0%;">Market Route: Canada – China (Coking Coal)</div>`)[0];
+                popup_bf0d6008bd004b33b96c22aa21e872e3.setContent(html_2e2deca7f90c81d6f1cb82c18b8be3c1);
+            
+        
+
+        poly_line_512732d12c477e1c0b5b8639abf6011d.bindPopup(popup_bf0d6008bd004b33b96c22aa21e872e3)
+        ;
+
+        
+    
+    
+            var circle_marker_31cb9498310ae05debe44be1a2db8801 = L.circleMarker(
+                [10.633333, -14.616667],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_38525e74ffd980a30add748043c7a677 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0d916173458c6ee4494b363892f05e80 = $(`<div id="html_0d916173458c6ee4494b363892f05e80" style="width: 100.0%; height: 100.0%;"><b>Market - Load Port</b><br>Route: West Africa – India (Bauxite)<br>Port: Kamsar_Guinea<br>Commodity: Bauxite<br>Quantity: 175000 MT</div>`)[0];
+                popup_38525e74ffd980a30add748043c7a677.setContent(html_0d916173458c6ee4494b363892f05e80);
+            
+        
+
+        circle_marker_31cb9498310ae05debe44be1a2db8801.bindPopup(popup_38525e74ffd980a30add748043c7a677)
+        ;
+
+        
+    
+    
+            circle_marker_31cb9498310ae05debe44be1a2db8801.bindTooltip(
+                `<div>
+                     Market Load: Kamsar_Guinea
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e3de62dcd053ca7d670311ae3f8c7199 = L.circleMarker(
+                [12.916667, 74.816667],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_abd3e23ff12db9cfd763f0c4539cd964 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5e4195a2abc6c0574752f528926bda3d = $(`<div id="html_5e4195a2abc6c0574752f528926bda3d" style="width: 100.0%; height: 100.0%;"><b>Market - Discharge Port</b><br>Route: West Africa – India (Bauxite)<br>Port: Mangalore_India<br>Commodity: Bauxite<br>Quantity: 175000 MT</div>`)[0];
+                popup_abd3e23ff12db9cfd763f0c4539cd964.setContent(html_5e4195a2abc6c0574752f528926bda3d);
+            
+        
+
+        circle_marker_e3de62dcd053ca7d670311ae3f8c7199.bindPopup(popup_abd3e23ff12db9cfd763f0c4539cd964)
+        ;
+
+        
+    
+    
+            circle_marker_e3de62dcd053ca7d670311ae3f8c7199.bindTooltip(
+                `<div>
+                     Market Discharge: Mangalore_India
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_55365deaaa7b166903fb083c53ae15ac = L.polyline(
+                [[10.633333, -14.616667], [12.916667, 74.816667]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_59394454c790841d972c0d5c4154e135 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cb49c91a9b5be83033ff27c0466deeb5 = $(`<div id="html_cb49c91a9b5be83033ff27c0466deeb5" style="width: 100.0%; height: 100.0%;">Market Route: West Africa – India (Bauxite)</div>`)[0];
+                popup_59394454c790841d972c0d5c4154e135.setContent(html_cb49c91a9b5be83033ff27c0466deeb5);
+            
+        
+
+        poly_line_55365deaaa7b166903fb083c53ae15ac.bindPopup(popup_59394454c790841d972c0d5c4154e135)
+        ;
+
+        
+    
+    
+            var circle_marker_2b15c540892560247aec4261eada70cb = L.circleMarker(
+                [-20.316667, 118.583333],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_7221e375076bd9f6df11fcd14de5f58d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_493480cc7a080044a12951e254970303 = $(`<div id="html_493480cc7a080044a12951e254970303" style="width: 100.0%; height: 100.0%;"><b>Market - Load Port</b><br>Route: Australia – South Korea (Iron Ore)<br>Port: Port Hedland_Australia<br>Commodity: Iron Ore<br>Quantity: 165000 MT</div>`)[0];
+                popup_7221e375076bd9f6df11fcd14de5f58d.setContent(html_493480cc7a080044a12951e254970303);
+            
+        
+
+        circle_marker_2b15c540892560247aec4261eada70cb.bindPopup(popup_7221e375076bd9f6df11fcd14de5f58d)
+        ;
+
+        
+    
+    
+            circle_marker_2b15c540892560247aec4261eada70cb.bindTooltip(
+                `<div>
+                     Market Load: Port Hedland_Australia
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_15ab5d55f80f7ac617ea30b67edd3699 = L.circleMarker(
+                [34.85, 127.8],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_82651bcd7aedaba5b93ffca2c91af147 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7aab70b461c6d3edb088d08d5ff392fe = $(`<div id="html_7aab70b461c6d3edb088d08d5ff392fe" style="width: 100.0%; height: 100.0%;"><b>Market - Discharge Port</b><br>Route: Australia – South Korea (Iron Ore)<br>Port: Gwangyang_South Korea<br>Commodity: Iron Ore<br>Quantity: 165000 MT</div>`)[0];
+                popup_82651bcd7aedaba5b93ffca2c91af147.setContent(html_7aab70b461c6d3edb088d08d5ff392fe);
+            
+        
+
+        circle_marker_15ab5d55f80f7ac617ea30b67edd3699.bindPopup(popup_82651bcd7aedaba5b93ffca2c91af147)
+        ;
+
+        
+    
+    
+            circle_marker_15ab5d55f80f7ac617ea30b67edd3699.bindTooltip(
+                `<div>
+                     Market Discharge: Gwangyang_South Korea
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_830d04512939e943d2b048434430dc97 = L.polyline(
+                [[-20.316667, 118.583333], [34.85, 127.8]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_70492fab1d29e7f9b9aa98974ed6f3dd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7e9f5cb752011159e74db9eaac339c4d = $(`<div id="html_7e9f5cb752011159e74db9eaac339c4d" style="width: 100.0%; height: 100.0%;">Market Route: Australia – South Korea (Iron Ore)</div>`)[0];
+                popup_70492fab1d29e7f9b9aa98974ed6f3dd.setContent(html_7e9f5cb752011159e74db9eaac339c4d);
+            
+        
+
+        poly_line_830d04512939e943d2b048434430dc97.bindPopup(popup_70492fab1d29e7f9b9aa98974ed6f3dd)
+        ;
+
+        
+    
+    
+            var circle_marker_ad5350d09ff436b656b489df0ecb9267 = L.circleMarker(
+                [-20.283333, -40.25],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_c3bfcf11c5bda536ce6913e1d3d872ba = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4a99b3a23b98d9598c40158a9dce7123 = $(`<div id="html_4a99b3a23b98d9598c40158a9dce7123" style="width: 100.0%; height: 100.0%;"><b>Market - Load Port</b><br>Route: Brazil – Malaysia (Iron Ore)<br>Port: Tubarao_Brazil<br>Commodity: Iron Ore<br>Quantity: 180000 MT</div>`)[0];
+                popup_c3bfcf11c5bda536ce6913e1d3d872ba.setContent(html_4a99b3a23b98d9598c40158a9dce7123);
+            
+        
+
+        circle_marker_ad5350d09ff436b656b489df0ecb9267.bindPopup(popup_c3bfcf11c5bda536ce6913e1d3d872ba)
+        ;
+
+        
+    
+    
+            circle_marker_ad5350d09ff436b656b489df0ecb9267.bindTooltip(
+                `<div>
+                     Market Load: Tubarao_Brazil
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_62948ff3d3280d00a6b159be7c03877d = L.circleMarker(
+                [4.233333, 126.783333],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_810849e78414811d0ef1bf8a8c0641d9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_113e6e347dc9f5b428412a7985e0adb0 = $(`<div id="html_113e6e347dc9f5b428412a7985e0adb0" style="width: 100.0%; height: 100.0%;"><b>Market - Discharge Port</b><br>Route: Brazil – Malaysia (Iron Ore)<br>Port: Teluk Rubiah_Malaysia<br>Commodity: Iron Ore<br>Quantity: 180000 MT</div>`)[0];
+                popup_810849e78414811d0ef1bf8a8c0641d9.setContent(html_113e6e347dc9f5b428412a7985e0adb0);
+            
+        
+
+        circle_marker_62948ff3d3280d00a6b159be7c03877d.bindPopup(popup_810849e78414811d0ef1bf8a8c0641d9)
+        ;
+
+        
+    
+    
+            circle_marker_62948ff3d3280d00a6b159be7c03877d.bindTooltip(
+                `<div>
+                     Market Discharge: Teluk Rubiah_Malaysia
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b6fd1dcc0de5075529528d5b2e6453ea = L.polyline(
+                [[-20.283333, -40.25], [4.233333, 126.783333]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d71aa34db885799f85aa1c3b16cc9566);
+        
+    
+        var popup_aa20774c71356a87641cf1f3dd10506c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1aede1917ac3e210a9f5c24b60244aa5 = $(`<div id="html_1aede1917ac3e210a9f5c24b60244aa5" style="width: 100.0%; height: 100.0%;">Market Route: Brazil – Malaysia (Iron Ore)</div>`)[0];
+                popup_aa20774c71356a87641cf1f3dd10506c.setContent(html_1aede1917ac3e210a9f5c24b60244aa5);
+            
+        
+
+        poly_line_b6fd1dcc0de5075529528d5b2e6453ea.bindPopup(popup_aa20774c71356a87641cf1f3dd10506c)
+        ;
+
+        
+    
+</script>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e27e9d224bef16590ebf839a35599a2a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e27e9d224bef16590ebf839a35599a2a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e27e9d224bef16590ebf839a35599a2a = L.map(
+                "map_e27e9d224bef16590ebf839a35599a2a",
+                {
+                    center: [29.858026142857145, 84.47173099999999],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f977f722f9e9d2a828e463591ede7836 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f977f722f9e9d2a828e463591ede7836.addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+            var marker_e881b953b55cb6b484840b7e59a266fb = L.marker(
+                [36.033333, 120.266667],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_aa0dfb8c4c01e7868dfdec3e76abd128 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_446fb0fe733456107684acf65d60bd38 = $(`<div id="html_446fb0fe733456107684acf65d60bd38" style="width: 100.0%; height: 100.0%;">Discharging Qingdao, China</div>`)[0];
+                popup_aa0dfb8c4c01e7868dfdec3e76abd128.setContent(html_446fb0fe733456107684acf65d60bd38);
+            
+        
+
+        marker_e881b953b55cb6b484840b7e59a266fb.bindPopup(popup_aa0dfb8c4c01e7868dfdec3e76abd128)
+        ;
+
+        
+    
+    
+            marker_e881b953b55cb6b484840b7e59a266fb.bindTooltip(
+                `<div>
+                     Discharging Qingdao, China
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d71f6b9ac88ca6c8ea925050934fcffe = L.marker(
+                [12.666667, 101.166667],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_52278a54a18557237eea505445050bf0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7a72fb4235cae0c62eaf20c2d162e84d = $(`<div id="html_7a72fb4235cae0c62eaf20c2d162e84d" style="width: 100.0%; height: 100.0%;">Discharging Map Ta Phut, Thailand</div>`)[0];
+                popup_52278a54a18557237eea505445050bf0.setContent(html_7a72fb4235cae0c62eaf20c2d162e84d);
+            
+        
+
+        marker_d71f6b9ac88ca6c8ea925050934fcffe.bindPopup(popup_52278a54a18557237eea505445050bf0)
+        ;
+
+        
+    
+    
+            marker_d71f6b9ac88ca6c8ea925050934fcffe.bindTooltip(
+                `<div>
+                     Discharging Map Ta Phut, Thailand
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4d42fe8155c713384c8c961eaddb6506 = L.marker(
+                [34.85, 127.8],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_7367f9380f2a0ce71871a7e7d7c4f4df = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7ff97c979172196ce20fdc3f36ce3efb = $(`<div id="html_7ff97c979172196ce20fdc3f36ce3efb" style="width: 100.0%; height: 100.0%;">Discharging Gwangyang, South Korea</div>`)[0];
+                popup_7367f9380f2a0ce71871a7e7d7c4f4df.setContent(html_7ff97c979172196ce20fdc3f36ce3efb);
+            
+        
+
+        marker_4d42fe8155c713384c8c961eaddb6506.bindPopup(popup_7367f9380f2a0ce71871a7e7d7c4f4df)
+        ;
+
+        
+    
+    
+            marker_4d42fe8155c713384c8c961eaddb6506.bindTooltip(
+                `<div>
+                     Discharging Gwangyang, South Korea
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0caba1dbfe5b6172a6573544ec7dca89 = L.marker(
+                [21.75, 108.35],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_4ed92618d2f9bc40eb8c3b0fcc63c1f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_25d0008c8bf5ccebecc841db671b835f = $(`<div id="html_25d0008c8bf5ccebecc841db671b835f" style="width: 100.0%; height: 100.0%;">Discharging Fangcheng, China</div>`)[0];
+                popup_4ed92618d2f9bc40eb8c3b0fcc63c1f6.setContent(html_25d0008c8bf5ccebecc841db671b835f);
+            
+        
+
+        marker_0caba1dbfe5b6172a6573544ec7dca89.bindPopup(popup_4ed92618d2f9bc40eb8c3b0fcc63c1f6)
+        ;
+
+        
+    
+    
+            marker_0caba1dbfe5b6172a6573544ec7dca89.bindTooltip(
+                `<div>
+                     Discharging Fangcheng, China
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_efa89dce0919543c09f6eb866917a5d2 = L.marker(
+                [20.266667, 86.683333],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_165343ba48d1799404b84f3d10135852 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_234d4975ab58b11e811a1740b3be67f2 = $(`<div id="html_234d4975ab58b11e811a1740b3be67f2" style="width: 100.0%; height: 100.0%;">Discharging Paradip, India</div>`)[0];
+                popup_165343ba48d1799404b84f3d10135852.setContent(html_234d4975ab58b11e811a1740b3be67f2);
+            
+        
+
+        marker_efa89dce0919543c09f6eb866917a5d2.bindPopup(popup_165343ba48d1799404b84f3d10135852)
+        ;
+
+        
+    
+    
+            marker_efa89dce0919543c09f6eb866917a5d2.bindTooltip(
+                `<div>
+                     Discharging Paradip, India
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_47b0292836a7b82f97608c24fa74a260 = L.marker(
+                [51.9, 4.483333],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_aefc988b3c48a9cba5b1d4b3b51fc968 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4e68e73d8302cd2958e67d2b65d4ae99 = $(`<div id="html_4e68e73d8302cd2958e67d2b65d4ae99" style="width: 100.0%; height: 100.0%;">Discharging Rotterdam, Netherlands</div>`)[0];
+                popup_aefc988b3c48a9cba5b1d4b3b51fc968.setContent(html_4e68e73d8302cd2958e67d2b65d4ae99);
+            
+        
+
+        marker_47b0292836a7b82f97608c24fa74a260.bindPopup(popup_aefc988b3c48a9cba5b1d4b3b51fc968)
+        ;
+
+        
+    
+    
+            marker_47b0292836a7b82f97608c24fa74a260.bindTooltip(
+                `<div>
+                     Discharging Rotterdam, Netherlands
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_844473f6cd90a78f109782544a9e85dc = L.marker(
+                [24.45, 118.066667],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_d36a0102c6fae1625dd2cd85d144e1b8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ed50c0cf996728e3ed20c1a31c893983 = $(`<div id="html_ed50c0cf996728e3ed20c1a31c893983" style="width: 100.0%; height: 100.0%;">Discharging Xiamen, China</div>`)[0];
+                popup_d36a0102c6fae1625dd2cd85d144e1b8.setContent(html_ed50c0cf996728e3ed20c1a31c893983);
+            
+        
+
+        marker_844473f6cd90a78f109782544a9e85dc.bindPopup(popup_d36a0102c6fae1625dd2cd85d144e1b8)
+        ;
+
+        
+    
+    
+            marker_844473f6cd90a78f109782544a9e85dc.bindTooltip(
+                `<div>
+                     Discharging Xiamen, China
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_72a32c23f2b7615655ea1cfcd34fdd01 = L.marker(
+                [23.033333, 70.216667],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_70e53aaf85366b3f357a16ba02c54387 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_619fa0ba8724cb9f29deb965af1ba098 = $(`<div id="html_619fa0ba8724cb9f29deb965af1ba098" style="width: 100.0%; height: 100.0%;">Discharging Kandla, India</div>`)[0];
+                popup_70e53aaf85366b3f357a16ba02c54387.setContent(html_619fa0ba8724cb9f29deb965af1ba098);
+            
+        
+
+        marker_72a32c23f2b7615655ea1cfcd34fdd01.bindPopup(popup_70e53aaf85366b3f357a16ba02c54387)
+        ;
+
+        
+    
+    
+            marker_72a32c23f2b7615655ea1cfcd34fdd01.bindTooltip(
+                `<div>
+                     Discharging Kandla, India
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cc49f75925f7301653656d6aee624382 = L.marker(
+                [51.583333, -3.816667],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_e80a1a625991d7a5d190851f4bdbc112 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ddf1953380ada8a679059f665bc5caf8 = $(`<div id="html_ddf1953380ada8a679059f665bc5caf8" style="width: 100.0%; height: 100.0%;">Discharging Port Talbot, Wales</div>`)[0];
+                popup_e80a1a625991d7a5d190851f4bdbc112.setContent(html_ddf1953380ada8a679059f665bc5caf8);
+            
+        
+
+        marker_cc49f75925f7301653656d6aee624382.bindPopup(popup_e80a1a625991d7a5d190851f4bdbc112)
+        ;
+
+        
+    
+    
+            marker_cc49f75925f7301653656d6aee624382.bindTooltip(
+                `<div>
+                     Discharging Port Talbot, Wales
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ba534003fe87a102ce440c371a47c56f = L.marker(
+                [34.85, 127.8],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_bef01ee5d7bc0825f99c8b81b2fc7087 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_757c83e77fdaa6fee4cd049f01728d90 = $(`<div id="html_757c83e77fdaa6fee4cd049f01728d90" style="width: 100.0%; height: 100.0%;">Discharging Gwangyang, South Korea</div>`)[0];
+                popup_bef01ee5d7bc0825f99c8b81b2fc7087.setContent(html_757c83e77fdaa6fee4cd049f01728d90);
+            
+        
+
+        marker_ba534003fe87a102ce440c371a47c56f.bindPopup(popup_bef01ee5d7bc0825f99c8b81b2fc7087)
+        ;
+
+        
+    
+    
+            marker_ba534003fe87a102ce440c371a47c56f.bindTooltip(
+                `<div>
+                     Discharging Gwangyang, South Korea
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1595b4295431d2d12143093afc8c3973 = L.marker(
+                [22.733333, 69.7],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_0a6c3d3d28f26a72a051cbb7fad221ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8da4d23d23b8efa888986d933b7269f9 = $(`<div id="html_8da4d23d23b8efa888986d933b7269f9" style="width: 100.0%; height: 100.0%;">Discharging Mundra, India</div>`)[0];
+                popup_0a6c3d3d28f26a72a051cbb7fad221ec.setContent(html_8da4d23d23b8efa888986d933b7269f9);
+            
+        
+
+        marker_1595b4295431d2d12143093afc8c3973.bindPopup(popup_0a6c3d3d28f26a72a051cbb7fad221ec)
+        ;
+
+        
+    
+    
+            marker_1595b4295431d2d12143093afc8c3973.bindTooltip(
+                `<div>
+                     Discharging Mundra, India
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_36d4f476d0131e95c01cd3230eb35af2 = L.marker(
+                [39.2, 119.016667],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_417699b61060222bfd7c5a3b90e41b2a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e3d00c423bcee58ca118af4dcc1290b = $(`<div id="html_2e3d00c423bcee58ca118af4dcc1290b" style="width: 100.0%; height: 100.0%;">Discharging Jingtang, China</div>`)[0];
+                popup_417699b61060222bfd7c5a3b90e41b2a.setContent(html_2e3d00c423bcee58ca118af4dcc1290b);
+            
+        
+
+        marker_36d4f476d0131e95c01cd3230eb35af2.bindPopup(popup_417699b61060222bfd7c5a3b90e41b2a)
+        ;
+
+        
+    
+    
+            marker_36d4f476d0131e95c01cd3230eb35af2.bindTooltip(
+                `<div>
+                     Discharging Jingtang, China
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3c19e95d676b8f80b971446827031f9e = L.marker(
+                [17.6869, 83.2185],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_7258a166c441339e71669df65bc08220 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5cd6e67d443ee8207e82ec5535cdc46a = $(`<div id="html_5cd6e67d443ee8207e82ec5535cdc46a" style="width: 100.0%; height: 100.0%;">Discharging Vizag, India</div>`)[0];
+                popup_7258a166c441339e71669df65bc08220.setContent(html_5cd6e67d443ee8207e82ec5535cdc46a);
+            
+        
+
+        marker_3c19e95d676b8f80b971446827031f9e.bindPopup(popup_7258a166c441339e71669df65bc08220)
+        ;
+
+        
+    
+    
+            marker_3c19e95d676b8f80b971446827031f9e.bindTooltip(
+                `<div>
+                     Discharging Vizag, India
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c0a13147e44a2284178c9f6e7e150bcc = L.marker(
+                [27.0088, 49.6524],
+                {
+}
+            ).addTo(map_e27e9d224bef16590ebf839a35599a2a);
+        
+    
+        var popup_73f025f86a5c6aba0ef9696ac1f90695 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a58e276c9b8d5d8b66a866243d87c2f0 = $(`<div id="html_a58e276c9b8d5d8b66a866243d87c2f0" style="width: 100.0%; height: 100.0%;">Discharging Jubail, Saudi Arabia</div>`)[0];
+                popup_73f025f86a5c6aba0ef9696ac1f90695.setContent(html_a58e276c9b8d5d8b66a866243d87c2f0);
+            
+        
+
+        marker_c0a13147e44a2284178c9f6e7e150bcc.bindPopup(popup_73f025f86a5c6aba0ef9696ac1f90695)
+        ;
+
+        
+    
+    
+            marker_c0a13147e44a2284178c9f6e7e150bcc.bindTooltip(
+                `<div>
+                     Discharging Jubail, Saudi Arabia
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
