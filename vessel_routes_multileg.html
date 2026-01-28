@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b45e87b428982c4e5e054889de48874f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 50px; right: 50px; width: 200px; height: auto; 
+                background-color: white; border:2px solid grey; z-index:9999; 
+                font-size:14px; padding: 10px">
+    <h4>Legend</h4>
+    <p><i class="fa fa-ship" style="color:green"></i> Vessel Start</p>
+    <p><i class="fa fa-upload" style="color:blue"></i> Committed Load</p>
+    <p><i class="fa fa-upload" style="color:orange"></i> Market Load</p>
+    <p><i class="fa fa-download" style="color:red"></i> Discharge</p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_b45e87b428982c4e5e054889de48874f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b45e87b428982c4e5e054889de48874f = L.map(
+                "map_b45e87b428982c4e5e054889de48874f",
+                {
+                    center: [16.67195357142857, 63.176696428571425],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 3,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_545f74c29fa0f4e3efe3a119d96a68f5 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_545f74c29fa0f4e3efe3a119d96a68f5.addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+            var marker_485bd0b1f813386f92ff12f297d822b0 = L.marker(
+                [20.2777, 86.6928],
+                {
+}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+            var icon_564c27a255e1ccd805c34711d5485897 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "ship",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_37ce2407e748bc66f90be8f5cb2d12ef = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_09e968779ebe35c55ac881f69a888dfc = $(`<div id="html_09e968779ebe35c55ac881f69a888dfc" style="width: 100.0%; height: 100.0%;">ATLANTIC FORTUNE START</div>`)[0];
+                popup_37ce2407e748bc66f90be8f5cb2d12ef.setContent(html_09e968779ebe35c55ac881f69a888dfc);
+            
+        
+
+        marker_485bd0b1f813386f92ff12f297d822b0.bindPopup(popup_37ce2407e748bc66f90be8f5cb2d12ef)
+        ;
+
+        
+    
+    
+                marker_485bd0b1f813386f92ff12f297d822b0.setIcon(icon_564c27a255e1ccd805c34711d5485897);
+            
+    
+            var marker_95eeb90af730f64b7616882f2bcd5a12 = L.marker(
+                [-20.31, 118.6236],
+                {
+}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+            var icon_55fce1961fcf44742fe51086c75e4d0a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "upload",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9541b995b5c6651361d916d7ee79e504 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d21307ff4f8dda703f8cf424bd359dbc = $(`<div id="html_d21307ff4f8dda703f8cf424bd359dbc" style="width: 100.0%; height: 100.0%;">CARGILL_2<br>Committed<br>Load: PORT HEDLAND</div>`)[0];
+                popup_9541b995b5c6651361d916d7ee79e504.setContent(html_d21307ff4f8dda703f8cf424bd359dbc);
+            
+        
+
+        marker_95eeb90af730f64b7616882f2bcd5a12.bindPopup(popup_9541b995b5c6651361d916d7ee79e504)
+        ;
+
+        
+    
+    
+                marker_95eeb90af730f64b7616882f2bcd5a12.setIcon(icon_55fce1961fcf44742fe51086c75e4d0a);
+            
+    
+            var marker_9fb85ef261e516dbe6618297d5f2840c = L.marker(
+                [34.7529, 119.377],
+                {
+}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+            var icon_57b71d82969e1b6ced93e4e6e447e95d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "download",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_affc4b13857701afb0be3099430f606d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_34bfb061748f08cd00b461d36b655c76 = $(`<div id="html_34bfb061748f08cd00b461d36b655c76" style="width: 100.0%; height: 100.0%;">CARGILL_2<br>Committed<br>Discharge: LIANYUNGANG</div>`)[0];
+                popup_affc4b13857701afb0be3099430f606d.setContent(html_34bfb061748f08cd00b461d36b655c76);
+            
+        
+
+        marker_9fb85ef261e516dbe6618297d5f2840c.bindPopup(popup_affc4b13857701afb0be3099430f606d)
+        ;
+
+        
+    
+    
+                marker_9fb85ef261e516dbe6618297d5f2840c.setIcon(icon_57b71d82969e1b6ced93e4e6e447e95d);
+            
+    
+            var poly_line_666101c84b38d7ba8ef4bad16973e183 = L.polyline(
+                [[-20.31, 118.6236], [34.7529, 119.377]],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#1f77b4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+        var popup_11963ca960c1f85ba3550495418973db = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5814a9866aed45b579393cbc764a9123 = $(`<div id="html_5814a9866aed45b579393cbc764a9123" style="width: 100.0%; height: 100.0%;">ATLANTIC FORTUNE Leg 1: CARGILL_2</div>`)[0];
+                popup_11963ca960c1f85ba3550495418973db.setContent(html_5814a9866aed45b579393cbc764a9123);
+            
+        
+
+        poly_line_666101c84b38d7ba8ef4bad16973e183.bindPopup(popup_11963ca960c1f85ba3550495418973db)
+        ;
+
+        
+    
+    
+            var poly_line_d74c13d86948766dc623d28087f98536 = L.polyline(
+                [[20.2777, 86.6928], [-20.31, 118.6236], [34.7529, 119.377]],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#1f77b4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+        var popup_3fc10543af1fbe23ab08cb3e4a5e4f58 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_adb1aa7a8d016eb7b487ed872b9feaec = $(`<div id="html_adb1aa7a8d016eb7b487ed872b9feaec" style="width: 100.0%; height: 100.0%;">ATLANTIC FORTUNE Route</div>`)[0];
+                popup_3fc10543af1fbe23ab08cb3e4a5e4f58.setContent(html_adb1aa7a8d016eb7b487ed872b9feaec);
+            
+        
+
+        poly_line_d74c13d86948766dc623d28087f98536.bindPopup(popup_3fc10543af1fbe23ab08cb3e4a5e4f58)
+        ;
+
+        
+    
+    
+            var marker_e1fc40011eac1ef689ada52f2bf05467 = L.marker(
+                [51.94, 4.14],
+                {
+}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+            var icon_f22423f6075cefe87c8a55b9980c12a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "ship",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_317207fe32098285659243053cedc256 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5dee0297355570056c4224eef1b4cdd9 = $(`<div id="html_5dee0297355570056c4224eef1b4cdd9" style="width: 100.0%; height: 100.0%;">CORAL EMPEROR START</div>`)[0];
+                popup_317207fe32098285659243053cedc256.setContent(html_5dee0297355570056c4224eef1b4cdd9);
+            
+        
+
+        marker_e1fc40011eac1ef689ada52f2bf05467.bindPopup(popup_317207fe32098285659243053cedc256)
+        ;
+
+        
+    
+    
+                marker_e1fc40011eac1ef689ada52f2bf05467.setIcon(icon_f22423f6075cefe87c8a55b9980c12a1);
+            
+    
+            var marker_e11c7229e5118ab47d9422f2f384a741 = L.marker(
+                [-22.9332, -43.8378],
+                {
+}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+            var icon_ac86358d60b4ad3f9c216c75f52b1e94 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "upload",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f9e71b7e3c781ba1fccba11cda6ad0d1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3d506b7aa12db5d9c8e90fd540671a5 = $(`<div id="html_f3d506b7aa12db5d9c8e90fd540671a5" style="width: 100.0%; height: 100.0%;">CARGILL_3<br>Committed<br>Load: ITAGUAI</div>`)[0];
+                popup_f9e71b7e3c781ba1fccba11cda6ad0d1.setContent(html_f3d506b7aa12db5d9c8e90fd540671a5);
+            
+        
+
+        marker_e11c7229e5118ab47d9422f2f384a741.bindPopup(popup_f9e71b7e3c781ba1fccba11cda6ad0d1)
+        ;
+
+        
+    
+    
+                marker_e11c7229e5118ab47d9422f2f384a741.setIcon(icon_ac86358d60b4ad3f9c216c75f52b1e94);
+            
+    
+            var marker_8e17f7e8ff8eb017bcc7a49b87e9b500 = L.marker(
+                [36.0669, 120.3826],
+                {
+}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+            var icon_00d27517984069cfaf75075aaeafb9c8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "download",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_477d8f95bd8800874b0a8c14c6b8d43e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_88becc31f62c48472e3884af7714a54b = $(`<div id="html_88becc31f62c48472e3884af7714a54b" style="width: 100.0%; height: 100.0%;">CARGILL_3<br>Committed<br>Discharge: QINGDAO</div>`)[0];
+                popup_477d8f95bd8800874b0a8c14c6b8d43e.setContent(html_88becc31f62c48472e3884af7714a54b);
+            
+        
+
+        marker_8e17f7e8ff8eb017bcc7a49b87e9b500.bindPopup(popup_477d8f95bd8800874b0a8c14c6b8d43e)
+        ;
+
+        
+    
+    
+                marker_8e17f7e8ff8eb017bcc7a49b87e9b500.setIcon(icon_00d27517984069cfaf75075aaeafb9c8);
+            
+    
+            var poly_line_7b373800dcdcfc57fe346f2aadb7778b = L.polyline(
+                [[-22.9332, -43.8378], [36.0669, 120.3826]],
+                {"bubblingMouseEvents": true, "color": "#aec7e8", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#aec7e8", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+        var popup_d9199dacadec5a33601c530949f321ee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_892c05159501bf7b9ee64e6f8a7d6408 = $(`<div id="html_892c05159501bf7b9ee64e6f8a7d6408" style="width: 100.0%; height: 100.0%;">CORAL EMPEROR Leg 1: CARGILL_3</div>`)[0];
+                popup_d9199dacadec5a33601c530949f321ee.setContent(html_892c05159501bf7b9ee64e6f8a7d6408);
+            
+        
+
+        poly_line_7b373800dcdcfc57fe346f2aadb7778b.bindPopup(popup_d9199dacadec5a33601c530949f321ee)
+        ;
+
+        
+    
+    
+            var poly_line_b18205241b6f1fcc0b6dcaa9036ec2d8 = L.polyline(
+                [[51.94, 4.14], [-22.9332, -43.8378], [36.0669, 120.3826]],
+                {"bubblingMouseEvents": true, "color": "#aec7e8", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#aec7e8", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+        var popup_7dc4c49bc6558807f8b9c5a5f6ac5284 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_839f20b58b8653d0471c38ed024d7ec2 = $(`<div id="html_839f20b58b8653d0471c38ed024d7ec2" style="width: 100.0%; height: 100.0%;">CORAL EMPEROR Route</div>`)[0];
+                popup_7dc4c49bc6558807f8b9c5a5f6ac5284.setContent(html_839f20b58b8653d0471c38ed024d7ec2);
+            
+        
+
+        poly_line_b18205241b6f1fcc0b6dcaa9036ec2d8.bindPopup(popup_7dc4c49bc6558807f8b9c5a5f6ac5284)
+        ;
+
+        
+    
+    
+            var marker_18ebe0f21b71de22ac695c46e2095342 = L.marker(
+                [51.5947, -3.7841],
+                {
+}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+            var icon_827e53b3a7aaa5f6c5d62061bb7b5a4c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "ship",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6f501eceebf4559be57b992b9faea220 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d03d5411910f64b38ec5b4882bb5a20d = $(`<div id="html_d03d5411910f64b38ec5b4882bb5a20d" style="width: 100.0%; height: 100.0%;">IRON CENTURY START</div>`)[0];
+                popup_6f501eceebf4559be57b992b9faea220.setContent(html_d03d5411910f64b38ec5b4882bb5a20d);
+            
+        
+
+        marker_18ebe0f21b71de22ac695c46e2095342.bindPopup(popup_6f501eceebf4559be57b992b9faea220)
+        ;
+
+        
+    
+    
+                marker_18ebe0f21b71de22ac695c46e2095342.setIcon(icon_827e53b3a7aaa5f6c5d62061bb7b5a4c);
+            
+    
+            var marker_26e37bce28577f120ea185f8f70728ef = L.marker(
+                [10.6392, -15.3812],
+                {
+}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+            var icon_77be4c6e1f43cbebf4a0c21cef423acf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "upload",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bd436d2780e64ed942a695a29ffb1bfc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4649d1a6d4499777952da056d0715eb3 = $(`<div id="html_4649d1a6d4499777952da056d0715eb3" style="width: 100.0%; height: 100.0%;">CARGILL_1<br>Committed<br>Load: KAMSAR ANCHORAGE</div>`)[0];
+                popup_bd436d2780e64ed942a695a29ffb1bfc.setContent(html_4649d1a6d4499777952da056d0715eb3);
+            
+        
+
+        marker_26e37bce28577f120ea185f8f70728ef.bindPopup(popup_bd436d2780e64ed942a695a29ffb1bfc)
+        ;
+
+        
+    
+    
+                marker_26e37bce28577f120ea185f8f70728ef.setIcon(icon_77be4c6e1f43cbebf4a0c21cef423acf);
+            
+    
+            var marker_0e7e9c511f9a4aea208d1b7b5773d846 = L.marker(
+                [36.0669, 120.3826],
+                {
+}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+            var icon_4ae397aa1ba1ec33dd2b8672779e64b3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "download",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1558c38be2f49e0352d8a8723a53e6eb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_659c5b681b1a75a1ed36ac3f75375aba = $(`<div id="html_659c5b681b1a75a1ed36ac3f75375aba" style="width: 100.0%; height: 100.0%;">CARGILL_1<br>Committed<br>Discharge: QINGDAO</div>`)[0];
+                popup_1558c38be2f49e0352d8a8723a53e6eb.setContent(html_659c5b681b1a75a1ed36ac3f75375aba);
+            
+        
+
+        marker_0e7e9c511f9a4aea208d1b7b5773d846.bindPopup(popup_1558c38be2f49e0352d8a8723a53e6eb)
+        ;
+
+        
+    
+    
+                marker_0e7e9c511f9a4aea208d1b7b5773d846.setIcon(icon_4ae397aa1ba1ec33dd2b8672779e64b3);
+            
+    
+            var poly_line_e3c0622e9c7a541aaf3e0950cefcbd23 = L.polyline(
+                [[10.6392, -15.3812], [36.0669, 120.3826]],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff7f0e", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+        var popup_74ec3d81e2a462a57ca9c5418fc79dd4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a538b77abcaa2bd57dc5171d78e0ed79 = $(`<div id="html_a538b77abcaa2bd57dc5171d78e0ed79" style="width: 100.0%; height: 100.0%;">IRON CENTURY Leg 1: CARGILL_1</div>`)[0];
+                popup_74ec3d81e2a462a57ca9c5418fc79dd4.setContent(html_a538b77abcaa2bd57dc5171d78e0ed79);
+            
+        
+
+        poly_line_e3c0622e9c7a541aaf3e0950cefcbd23.bindPopup(popup_74ec3d81e2a462a57ca9c5418fc79dd4)
+        ;
+
+        
+    
+    
+            var poly_line_00ce039a091cd348124f4bcc5a403500 = L.polyline(
+                [[51.5947, -3.7841], [10.6392, -15.3812], [36.0669, 120.3826]],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#ff7f0e", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_b45e87b428982c4e5e054889de48874f);
+        
+    
+        var popup_14835976471035b19ed126237db94969 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_336fa48934180b77a2c60ddfbfd4cf99 = $(`<div id="html_336fa48934180b77a2c60ddfbfd4cf99" style="width: 100.0%; height: 100.0%;">IRON CENTURY Route</div>`)[0];
+                popup_14835976471035b19ed126237db94969.setContent(html_336fa48934180b77a2c60ddfbfd4cf99);
+            
+        
+
+        poly_line_00ce039a091cd348124f4bcc5a403500.bindPopup(popup_14835976471035b19ed126237db94969)
+        ;
+
+        
+    
+</script>
+</html>
