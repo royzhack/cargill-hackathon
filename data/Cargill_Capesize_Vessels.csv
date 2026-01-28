@@ -1,5 +1,5 @@
 Vessel Name,DWT (MT),Hire Rate (USD/day),Warranted Speed Laden (kn),Warranted Speed Ballast (kn),Warranted Sea Consumption Laden (mt/day),Warranted Sea Consumption Ballast (mt/day),Economical Speed Laden (kn),Economical Speed Ballast (kn),Economical Sea Consumption Laden (mt/day),Economical Sea Consumption Ballast (mt/day),Port Consumption Idle (mt/day),Port Consumption Working (mt/day),Current Position / Status,Current Position / Status_Latitude,Current Position / Status_Longitude,ETD,Bunker Remaining VLSFO (mt),Bunker Remaining MGO (mt)
-ANN BELL,180803,11750,13.5,14.5,60,55.0,12.0,12.5,42,38.0,2.0,3.0,Qingdao_China,36.0669,120.3826,2026-02-25,401.3,45.1
-OCEAN HORIZON,181550,15750,13.8,14.8,61,56.5,12.3,12.8,43,39.5,1.8,3.2,Map Ta Phut_Thailand,12.6512,101.1595,2026-03-01,265.8,64.3
-PACIFIC GLORY,182320,14800,13.5,14.2,59,54.0,12.2,12.7,44,40.0,2.0,3.0,Gwangyang_South Korea,34.9074,127.677,2026-03-10,601.9,98.1
-GOLDEN ASCENT,179965,13950,13.0,14.0,58,53.0,11.8,12.3,41,37.0,1.9,3.1,Fangcheng_China,21.5878,108.3705,2026-03-08,793.3,17.1
+ANN BELL,180803,11750,13.5,14.5,60,55.0,12.0,12.5,42,38.0,2.0,3.0,QINGDAO,36.0669,120.3826,2026-02-25,401.3,45.1
+OCEAN HORIZON,181550,15750,13.8,14.8,61,56.5,12.3,12.8,43,39.5,1.8,3.2,MAP TA PHUT,12.6512,101.1595,2026-03-01,265.8,64.3
+PACIFIC GLORY,182320,14800,13.5,14.2,59,54.0,12.2,12.7,44,40.0,2.0,3.0,GWANGYANG LNG TERMINAL,34.9074,127.677,2026-03-10,601.9,98.1
+GOLDEN ASCENT,179965,13950,13.0,14.0,58,53.0,11.8,12.3,41,37.0,1.9,3.1,FANGCHENG,21.5878,108.3705,2026-03-08,793.3,17.1
