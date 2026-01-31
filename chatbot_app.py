@@ -36,6 +36,13 @@ except ImportError:
     HAS_ENHANCED_VIZ = False
     print("Warning: Enhanced visualization generator not available")
 
+try:
+    from map_generator import create_vessel_routes_map
+    HAS_MAP_GENERATOR = True
+except ImportError:
+    HAS_MAP_GENERATOR = False
+    print("Warning: Map generator not available")
+
 app = Flask(__name__)
 CORS(app)
 
@@ -146,6 +153,15 @@ def get_visualization(viz_type):
         elif viz_type == 'scenario_analysis':
             create_scenario_analysis_flow()
             img_path = Path('diagrams/scenario_analysis_flow.png')
+        elif viz_type == 'vessel_routes_map':
+            if HAS_MAP_GENERATOR:
+                map_path = create_vessel_routes_map()
+                if map_path and map_path.exists():
+                    return send_file(str(map_path), mimetype='text/html')
+                else:
+                    return jsonify({'error': 'Failed to generate map'}), 500
+            else:
+                return jsonify({'error': 'Map generator not available'}), 503
         else:
             return jsonify({'error': 'Unknown visualization type'}), 400
         
@@ -161,6 +177,24 @@ def detect_and_generate_visualizations(user_message: str, response: str) -> list
     visualizations = []
     message_lower = user_message.lower()
     response_lower = response.lower()
+    
+    # Map visualization - check both user message and response
+    if any(word in message_lower for word in ['map', 'route', 'path', 'location', 'port', 'geographic', 'where', 'show me the']):
+        visualizations.append({
+            'type': 'vessel_routes_map',
+            'title': 'Vessel Routes & Cargo Map',
+            'url': '/api/visualization/vessel_routes_map',
+            'is_html': True
+        })
+    elif any(word in response_lower for word in ['route', 'port', 'vessel', 'cargo', 'load', 'discharge']):
+        # Also check response for route-related content
+        if any(word in message_lower for word in ['vessel', 'cargo', 'assignment', 'voyage']):
+            visualizations.append({
+                'type': 'vessel_routes_map',
+                'title': 'Vessel Routes & Cargo Map',
+                'url': '/api/visualization/vessel_routes_map',
+                'is_html': True
+            })
     
     # System architecture
     if any(word in message_lower for word in ['architecture', 'system', 'overview', 'components']):

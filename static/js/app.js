@@ -109,7 +109,6 @@ class ChatApp {
 
                 // Add visualizations if any
                 if (data.visualizations && data.visualizations.length > 0) {
-                    // Small delay to ensure message is rendered first
                     setTimeout(() => {
                         data.visualizations.forEach(viz => {
                             this.addVisualization(viz);
@@ -142,20 +141,18 @@ class ChatApp {
         if (role === 'user') {
             avatar.textContent = 'U';
         } else {
-            // Use a better icon for assistant
             avatar.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6S4.69 2 8 2s6 2.69 6 6-2.69 6-6 6z" fill="currentColor"/></svg>';
         }
 
         const contentDiv = document.createElement('div');
         contentDiv.className = 'message-content';
         
-        // Format content (enhanced markdown formatting)
+        // Format content
         const formatted = this.formatMessage(content);
         contentDiv.innerHTML = formatted;
         
         // Ensure proper spacing
         if (!contentDiv.querySelector('p, h1, h2, h3, ul, ol, pre, table')) {
-            // If no block elements, wrap in paragraph
             const text = contentDiv.textContent || contentDiv.innerText;
             if (text.trim()) {
                 contentDiv.innerHTML = `<p>${formatted}</p>`;
@@ -175,40 +172,33 @@ class ChatApp {
     formatMessage(content) {
         if (!content) return '';
         
-        // Escape HTML first to prevent XSS
         const escapeHtml = (text) => {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         };
         
-        // Split content into parts (code blocks vs regular text)
         const codeBlockRegex = /```(\w+)?\n?([\s\S]*?)```/g;
         const parts = [];
         let lastIndex = 0;
         let match;
         
         while ((match = codeBlockRegex.exec(content)) !== null) {
-            // Add text before code block
             if (match.index > lastIndex) {
                 parts.push({ type: 'text', content: content.substring(lastIndex, match.index) });
             }
-            // Add code block
             parts.push({ type: 'code', lang: match[1] || '', content: match[2].trim() });
             lastIndex = codeBlockRegex.lastIndex;
         }
         
-        // Add remaining text
         if (lastIndex < content.length) {
             parts.push({ type: 'text', content: content.substring(lastIndex) });
         }
         
-        // If no code blocks, treat entire content as text
         if (parts.length === 0) {
             parts.push({ type: 'text', content: content });
         }
         
-        // Process each part
         let formatted = '';
         
         for (const part of parts) {
@@ -217,20 +207,14 @@ class ChatApp {
             } else {
                 let text = escapeHtml(part.content);
                 
-                // Process markdown in text parts
-                // Headers
                 text = text.replace(/^### (.*$)/gim, '<h3>$1</h3>');
                 text = text.replace(/^## (.*$)/gim, '<h2>$1</h2>');
                 text = text.replace(/^# (.*$)/gim, '<h1>$1</h1>');
                 
-                // Bold and italic (order matters - bold first)
                 text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
                 text = text.replace(/\*(?!\*)([^*]+?)\*/g, '<em>$1</em>');
-                
-                // Inline code (but not inside code blocks)
                 text = text.replace(/`([^`\n]+)`/g, '<code>$1</code>');
                 
-                // Lists
                 const lines = text.split('\n');
                 const processedLines = [];
                 let inList = false;
@@ -269,7 +253,6 @@ class ChatApp {
                 
                 text = processedLines.join('\n');
                 
-                // Split into paragraphs
                 const paragraphs = text.split(/\n\n+/);
                 text = paragraphs.map(p => {
                     p = p.trim();
@@ -283,7 +266,6 @@ class ChatApp {
                     return `<p>${p}</p>`;
                 }).join('');
                 
-                // Convert single newlines to <br> within paragraphs
                 text = text.replace(/(<p>.*?<\/p>)/gs, (match) => {
                     return match.replace(/\n/g, '<br>');
                 });
@@ -292,7 +274,6 @@ class ChatApp {
             }
         }
         
-        // Clean up
         formatted = formatted.replace(/(<br>\s*){3,}/g, '<br><br>');
         formatted = formatted.replace(/<p><\/p>/g, '');
         
@@ -312,7 +293,7 @@ class ChatApp {
 
         const avatar = document.createElement('div');
         avatar.className = 'message-avatar';
-        avatar.textContent = 'AI';
+        avatar.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6S4.69 2 8 2s6 2.69 6 6-2.69 6-6 6z" fill="currentColor"/></svg>';
 
         const contentDiv = document.createElement('div');
         contentDiv.className = 'message-content';
@@ -321,9 +302,8 @@ class ChatApp {
         loadingDiv.className = 'loading-indicator';
         loadingDiv.innerHTML = '<div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div>';
         
-        // Add typing indicator text
         const typingText = document.createElement('div');
-        typingText.style.cssText = 'font-size: 13px; color: var(--claude-text-secondary); margin-top: 8px;';
+        typingText.className = 'typing-indicator';
         typingText.textContent = 'Thinking...';
         
         contentDiv.appendChild(loadingDiv);
@@ -337,6 +317,22 @@ class ChatApp {
         return messageDiv.id;
     }
 
+    removeMessage(messageId) {
+        const message = document.getElementById(messageId);
+        if (message) {
+            message.remove();
+        }
+    }
+
+    addErrorMessage(message) {
+        const messagesContainer = document.getElementById('chatMessages');
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = message;
+        messagesContainer.appendChild(errorDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
     addVisualization(viz) {
         const messagesContainer = document.getElementById('chatMessages');
 
@@ -348,34 +344,75 @@ class ChatApp {
         title.className = 'visualization-title';
         title.textContent = viz.title;
 
-        const imageContainer = document.createElement('div');
-        imageContainer.className = 'visualization-loading';
-        imageContainer.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; gap: 8px;"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span style="margin-left: 8px;">Loading visualization...</span></div>';
+        // Handle HTML maps differently from images
+        if (viz.is_html) {
+            const mapContainer = document.createElement('div');
+            mapContainer.className = 'map-container';
+            mapContainer.style.width = '100%';
+            mapContainer.style.height = '600px';
+            mapContainer.style.border = '1px solid var(--claude-border)';
+            mapContainer.style.borderRadius = '8px';
+            mapContainer.style.overflow = 'hidden';
+            mapContainer.style.background = '#f7f7f8';
+            
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'visualization-loading';
+            loadingDiv.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 600px;"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span style="margin-left: 8px;">Loading map...</span></div>';
+            
+            mapContainer.appendChild(loadingDiv);
+            
+            // Load map in iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = `${this.apiBase}${viz.url}?t=${Date.now()}`;
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            iframe.style.display = 'none';
+            
+            iframe.onload = () => {
+                loadingDiv.remove();
+                iframe.style.display = 'block';
+                setTimeout(() => {
+                    mapContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            };
+            
+            iframe.onerror = () => {
+                loadingDiv.innerHTML = '<div style="color: #ef4444; padding: 20px; text-align: center;">Failed to load map. Please try refreshing.</div>';
+            };
+            
+            mapContainer.appendChild(iframe);
+            vizContainer.appendChild(title);
+            vizContainer.appendChild(mapContainer);
+        } else {
+            // Regular image visualization
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'visualization-loading';
+            imageContainer.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; gap: 8px;"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div><span style="margin-left: 8px;">Loading visualization...</span></div>';
 
-        const img = document.createElement('img');
-        img.className = 'visualization-image';
-        img.src = `${this.apiBase}${viz.url}?t=${Date.now()}`; // Cache bust
-        img.alt = viz.title;
-        img.style.display = 'none';
-        
-        img.onload = () => {
-            imageContainer.replaceWith(img);
-            img.style.display = 'block';
-            // Smooth scroll to visualization
-            setTimeout(() => {
-                img.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
-        };
-        
-        img.onerror = () => {
-            imageContainer.innerHTML = '<div style="color: #ef4444; padding: 20px;">Failed to load visualization. Please try refreshing.</div>';
-        };
+            const img = document.createElement('img');
+            img.className = 'visualization-image';
+            img.src = `${this.apiBase}${viz.url}?t=${Date.now()}`;
+            img.alt = viz.title;
+            img.style.display = 'none';
+            
+            img.onload = () => {
+                imageContainer.replaceWith(img);
+                img.style.display = 'block';
+                setTimeout(() => {
+                    img.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            };
+            
+            img.onerror = () => {
+                imageContainer.innerHTML = '<div style="color: #ef4444; padding: 20px;">Failed to load visualization. Please try refreshing.</div>';
+            };
 
-        vizContainer.appendChild(title);
-        vizContainer.appendChild(imageContainer);
-        vizContainer.appendChild(img); // Add img to DOM for preloading
+            vizContainer.appendChild(title);
+            vizContainer.appendChild(imageContainer);
+            vizContainer.appendChild(img);
+        }
 
-        // Add to last assistant message
         const lastMessage = messagesContainer.querySelector('.message-assistant:last-child');
         if (lastMessage) {
             const content = lastMessage.querySelector('.message-content');
@@ -383,7 +420,6 @@ class ChatApp {
                 content.appendChild(vizContainer);
             }
         } else {
-            // Create a message container for standalone visualization
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message message-assistant';
             const avatar = document.createElement('div');
@@ -400,60 +436,42 @@ class ChatApp {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
-    addErrorMessage(message) {
-        const messagesContainer = document.getElementById('chatMessages');
-        
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.textContent = message;
-        
-        messagesContainer.appendChild(errorDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    removeMessage(messageId) {
-        const message = document.getElementById(messageId);
-        if (message) {
-            message.remove();
-        }
-    }
-
     async resetConversation() {
-        if (!confirm('Are you sure you want to start a new conversation?')) {
+        if (!confirm('Start a new conversation? This will clear the current chat history.')) {
             return;
         }
 
         try {
-            await fetch(`${this.apiBase}/api/reset`, {
+            const response = await fetch(`${this.apiBase}/api/reset`, {
                 method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
             });
 
-            // Clear messages
-            const messagesContainer = document.getElementById('chatMessages');
-            messagesContainer.innerHTML = `
-                <div class="welcome-message">
-                    <h3>Welcome to Voyage Optimization Assistant</h3>
-                    <p>I can help you understand:</p>
-                    <ul>
-                        <li>Optimal vessel-cargo assignments</li>
-                        <li>Profit and TCE analysis</li>
-                        <li>Risk-adjusted voyage economics</li>
-                        <li>Scenario analysis and thresholds</li>
-                        <li>Trade-offs between alternatives</li>
-                    </ul>
-                    <p class="example-prompts">Try asking: "What is the best voyage for PACIFIC GLORY?" or "Compare the top 3 most profitable voyages"</p>
-                </div>
-            `;
-
-            this.messages = [];
+            if (response.ok) {
+                const messagesContainer = document.getElementById('chatMessages');
+                messagesContainer.innerHTML = `
+                    <div class="welcome-message">
+                        <h3>Welcome to Voyage Optimization Assistant</h3>
+                        <p>I can help you understand:</p>
+                        <ul>
+                            <li>Optimal vessel-cargo assignments</li>
+                            <li>Profit and TCE analysis</li>
+                            <li>Risk-adjusted voyage economics</li>
+                            <li>Scenario analysis and thresholds</li>
+                            <li>Trade-offs between alternatives</li>
+                        </ul>
+                        <p class="example-prompts">Try asking: "What is the best voyage for PACIFIC GLORY?" or "Compare the top 3 most profitable voyages"</p>
+                    </div>
+                `;
+                this.messages = [];
+            }
         } catch (error) {
-            console.error('Reset failed:', error);
-            alert('Failed to reset conversation');
+            console.error('Reset error:', error);
         }
     }
 }
 
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    new ChatApp();
+    window.chatApp = new ChatApp();
 });

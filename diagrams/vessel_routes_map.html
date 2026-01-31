@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_44de0541922b5ee965ea4a66671d4ec8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style="position: fixed; 
+                    bottom: 50px; left: 50px; width: 250px; height: auto; 
+                    background-color: white; border:2px solid grey; z-index:9999; 
+                    font-size:14px; padding: 10px; border-radius: 8px;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <h4 style="margin: 0 0 10px 0; color: #2d333a;">Map Legend</h4>
+        <p style="margin: 4px 0;"><i class="fa fa-upload" style="color: blue;"></i> Load Port (Committed)</p>
+        <p style="margin: 4px 0;"><i class="fa fa-upload" style="color: orange;"></i> Load Port (Market)</p>
+        <p style="margin: 4px 0;"><i class="fa fa-download" style="color: red;"></i> Discharge Port</p>
+        <p style="margin: 4px 0;"><span style="display: inline-block; width: 20px; height: 3px; background-color: #10a37f; margin-right: 5px;"></span> Vessel Route</p>
+        <p style="margin: 4px 0; font-size: 12px; color: #6e6e80;">Click markers for details</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_44de0541922b5ee965ea4a66671d4ec8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_44de0541922b5ee965ea4a66671d4ec8 = L.map(
+                "map_44de0541922b5ee965ea4a66671d4ec8",
+                {
+                    center: [10.435218181818183, 61.20135454545453],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 3,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c986bbabd8d959452d8a3ac2199fd8c2 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c986bbabd8d959452d8a3ac2199fd8c2.addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var tile_layer_1e1cb96f716461610d749eed8c3ac8e0 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_1e1cb96f716461610d749eed8c3ac8e0.addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var tile_layer_747c8d4b85ecc3dae7bd9ddb4895e795 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_747c8d4b85ecc3dae7bd9ddb4895e795.addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var marker_c2840e637243974eb6bea2deb1c7aa85 = L.marker(
+                [10.6392, -15.3812],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_d5b6f32eb87496a9a06cee103cf2bff4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "upload",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_078bf5ee43d750ace8d1e7eff9fd4159 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_312c9511b295fef2278f3ce3e1862fda = $(`<div id="html_312c9511b295fef2278f3ce3e1862fda" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">MARKET_6</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Market</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> KAMSAR ANCHORAGE</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 175,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> ANN BELL</p>                             </div>                             </div>`)[0];
+                popup_078bf5ee43d750ace8d1e7eff9fd4159.setContent(html_312c9511b295fef2278f3ce3e1862fda);
+            
+        
+
+        marker_c2840e637243974eb6bea2deb1c7aa85.bindPopup(popup_078bf5ee43d750ace8d1e7eff9fd4159)
+        ;
+
+        
+    
+    
+            marker_c2840e637243974eb6bea2deb1c7aa85.bindTooltip(
+                `<div>
+                     Load: KAMSAR ANCHORAGE (MARKET_6)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c2840e637243974eb6bea2deb1c7aa85.setIcon(icon_d5b6f32eb87496a9a06cee103cf2bff4);
+            
+    
+            var marker_c857ba2da5a8315bc9097e829c181b09 = L.marker(
+                [12.9156, 74.856],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_417db710a5e993a8f90af22eefc994a7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "download",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e166b443316e0018835f3f5c8e6c3e2b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3bb68030373051a0853e873e76838e10 = $(`<div id="html_3bb68030373051a0853e873e76838e10" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">MARKET_6</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Market</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> NEW MANGALORE</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 175,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $1,451,754</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $19,926/day</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> ANN BELL</p>                             </div>                             </div>`)[0];
+                popup_e166b443316e0018835f3f5c8e6c3e2b.setContent(html_3bb68030373051a0853e873e76838e10);
+            
+        
+
+        marker_c857ba2da5a8315bc9097e829c181b09.bindPopup(popup_e166b443316e0018835f3f5c8e6c3e2b)
+        ;
+
+        
+    
+    
+            marker_c857ba2da5a8315bc9097e829c181b09.bindTooltip(
+                `<div>
+                     Discharge: NEW MANGALORE (MARKET_6)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c857ba2da5a8315bc9097e829c181b09.setIcon(icon_417db710a5e993a8f90af22eefc994a7);
+            
+    
+            var poly_line_6006e3a67599bc55fcc9a89c68ab599d = L.polyline(
+                [[10.6392, -15.3812], [12.9156, 74.856]],
+                {"bubblingMouseEvents": true, "color": "#aec7e8", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#aec7e8", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+        var popup_573620712594953994ba78b62a91b4c2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_971a6f681fdd236ff08b7e09911926eb = $(`<div id="html_971a6f681fdd236ff08b7e09911926eb" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">ANN BELL</h4>                                 <p style="margin: 4px 0;"><strong>Cargo:</strong> MARKET_6</p>                                 <p style="margin: 4px 0;"><strong>Route:</strong> KAMSAR ANCHORAGE → NEW MANGALORE</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $1,451,754</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $19,926/day</p>                             </div>                             </div>`)[0];
+                popup_573620712594953994ba78b62a91b4c2.setContent(html_971a6f681fdd236ff08b7e09911926eb);
+            
+        
+
+        poly_line_6006e3a67599bc55fcc9a89c68ab599d.bindPopup(popup_573620712594953994ba78b62a91b4c2)
+        ;
+
+        
+    
+    
+            poly_line_6006e3a67599bc55fcc9a89c68ab599d.bindTooltip(
+                `<div>
+                     ANN BELL: KAMSAR ANCHORAGE → NEW MANGALORE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ab12f1c89ba266e59b9079343287e5db = L.polyline(
+                [[10.6392, -15.3812], [12.9156, 74.856]],
+                {"bubblingMouseEvents": true, "color": "#aec7e8", "dashArray": "10, 5", "dashOffset": null, "fill": false, "fillColor": "#aec7e8", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            poly_line_ab12f1c89ba266e59b9079343287e5db.bindTooltip(
+                `<div>
+                     ANN BELL Complete Route
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_72b4c7fef64c28fdc3880f4d4416a210 = L.marker(
+                [49.2965, -123.1338],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_3da1048ad54c919d64160774a9a11031 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "upload",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d2ff6cd31b996b17ebd5005fcca0d9c7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_22493b4366ffda4ac7950915d4ed8973 = $(`<div id="html_22493b4366ffda4ac7950915d4ed8973" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">MARKET_5</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Market</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> VANCOUVER (CANADA)</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 160,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> PACIFIC GLORY</p>                             </div>                             </div>`)[0];
+                popup_d2ff6cd31b996b17ebd5005fcca0d9c7.setContent(html_22493b4366ffda4ac7950915d4ed8973);
+            
+        
+
+        marker_72b4c7fef64c28fdc3880f4d4416a210.bindPopup(popup_d2ff6cd31b996b17ebd5005fcca0d9c7)
+        ;
+
+        
+    
+    
+            marker_72b4c7fef64c28fdc3880f4d4416a210.bindTooltip(
+                `<div>
+                     Load: VANCOUVER (CANADA) (MARKET_5)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_72b4c7fef64c28fdc3880f4d4416a210.setIcon(icon_3da1048ad54c919d64160774a9a11031);
+            
+    
+            var marker_87d96e47c789b01305fe1e3cfbbf0662 = L.marker(
+                [21.5878, 108.3705],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_ef99c9366c266867e7c4b0c487de4cb0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "download",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_70a2984ae239a48a8f0863c52cb0137d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0d3029c7f7c8ac1d1ebdd93b1d7cb439 = $(`<div id="html_0d3029c7f7c8ac1d1ebdd93b1d7cb439" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">MARKET_5</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Market</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> FANGCHENG</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 160,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $2,204,885</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $59,876/day</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> PACIFIC GLORY</p>                             </div>                             </div>`)[0];
+                popup_70a2984ae239a48a8f0863c52cb0137d.setContent(html_0d3029c7f7c8ac1d1ebdd93b1d7cb439);
+            
+        
+
+        marker_87d96e47c789b01305fe1e3cfbbf0662.bindPopup(popup_70a2984ae239a48a8f0863c52cb0137d)
+        ;
+
+        
+    
+    
+            marker_87d96e47c789b01305fe1e3cfbbf0662.bindTooltip(
+                `<div>
+                     Discharge: FANGCHENG (MARKET_5)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_87d96e47c789b01305fe1e3cfbbf0662.setIcon(icon_ef99c9366c266867e7c4b0c487de4cb0);
+            
+    
+            var poly_line_de77261deabb4259689bdc768ef56460 = L.polyline(
+                [[49.2965, -123.1338], [21.5878, 108.3705]],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2ca02c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+        var popup_c77a0f636aa9d7d620b44ec4ba8e0f11 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ccd29ac6e7b3442da0c2b177e44cc055 = $(`<div id="html_ccd29ac6e7b3442da0c2b177e44cc055" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">PACIFIC GLORY</h4>                                 <p style="margin: 4px 0;"><strong>Cargo:</strong> MARKET_5</p>                                 <p style="margin: 4px 0;"><strong>Route:</strong> VANCOUVER (CANADA) → FANGCHENG</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $2,204,885</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $59,876/day</p>                             </div>                             </div>`)[0];
+                popup_c77a0f636aa9d7d620b44ec4ba8e0f11.setContent(html_ccd29ac6e7b3442da0c2b177e44cc055);
+            
+        
+
+        poly_line_de77261deabb4259689bdc768ef56460.bindPopup(popup_c77a0f636aa9d7d620b44ec4ba8e0f11)
+        ;
+
+        
+    
+    
+            poly_line_de77261deabb4259689bdc768ef56460.bindTooltip(
+                `<div>
+                     PACIFIC GLORY: VANCOUVER (CANADA) → FANGCHENG
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b8098b4c6f16f652a596536d6ab1a3c8 = L.polyline(
+                [[49.2965, -123.1338], [21.5878, 108.3705]],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": "10, 5", "dashOffset": null, "fill": false, "fillColor": "#2ca02c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            poly_line_b8098b4c6f16f652a596536d6ab1a3c8.bindTooltip(
+                `<div>
+                     PACIFIC GLORY Complete Route
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_155292b2d118c9e1e1ed787fceb1dd05 = L.marker(
+                [-20.672, 116.699],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_c6cea8942f85c649a9111f4af2b66689 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "upload",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b68311cc2e9ffa71b295e7393e3f13b0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c8e0256c3aa91b44f410515a4f510765 = $(`<div id="html_c8e0256c3aa91b44f410515a4f510765" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">MARKET_1</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Market</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> DAMPIER</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 170,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> GOLDEN ASCENT</p>                             </div>                             </div>`)[0];
+                popup_b68311cc2e9ffa71b295e7393e3f13b0.setContent(html_c8e0256c3aa91b44f410515a4f510765);
+            
+        
+
+        marker_155292b2d118c9e1e1ed787fceb1dd05.bindPopup(popup_b68311cc2e9ffa71b295e7393e3f13b0)
+        ;
+
+        
+    
+    
+            marker_155292b2d118c9e1e1ed787fceb1dd05.bindTooltip(
+                `<div>
+                     Load: DAMPIER (MARKET_1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_155292b2d118c9e1e1ed787fceb1dd05.setIcon(icon_c6cea8942f85c649a9111f4af2b66689);
+            
+    
+            var marker_9f2b8cb222e372683289d7517510390e = L.marker(
+                [36.0669, 120.3826],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_4d4fbcea8caa13d4bdfc9d0b9ff25f27 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "download",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_60bbdb85e7cdace561a33527f3046138 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cb765fb4706807fa7c1840114ef2cf74 = $(`<div id="html_cb765fb4706807fa7c1840114ef2cf74" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">MARKET_1</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Market</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> QINGDAO</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 170,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $466,356</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $20,871/day</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> GOLDEN ASCENT</p>                             </div>                             </div>`)[0];
+                popup_60bbdb85e7cdace561a33527f3046138.setContent(html_cb765fb4706807fa7c1840114ef2cf74);
+            
+        
+
+        marker_9f2b8cb222e372683289d7517510390e.bindPopup(popup_60bbdb85e7cdace561a33527f3046138)
+        ;
+
+        
+    
+    
+            marker_9f2b8cb222e372683289d7517510390e.bindTooltip(
+                `<div>
+                     Discharge: QINGDAO (MARKET_1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9f2b8cb222e372683289d7517510390e.setIcon(icon_4d4fbcea8caa13d4bdfc9d0b9ff25f27);
+            
+    
+            var poly_line_988659b794daf7e640b94fc0ff7c8bc4 = L.polyline(
+                [[-20.672, 116.699], [36.0669, 120.3826]],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff7f0e", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+        var popup_a278ec4aaf0aeaeb8ae10292167fec74 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_04fd3b30e3667a2373364e046c0dde42 = $(`<div id="html_04fd3b30e3667a2373364e046c0dde42" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">GOLDEN ASCENT</h4>                                 <p style="margin: 4px 0;"><strong>Cargo:</strong> MARKET_1</p>                                 <p style="margin: 4px 0;"><strong>Route:</strong> DAMPIER → QINGDAO</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $466,356</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $20,871/day</p>                             </div>                             </div>`)[0];
+                popup_a278ec4aaf0aeaeb8ae10292167fec74.setContent(html_04fd3b30e3667a2373364e046c0dde42);
+            
+        
+
+        poly_line_988659b794daf7e640b94fc0ff7c8bc4.bindPopup(popup_a278ec4aaf0aeaeb8ae10292167fec74)
+        ;
+
+        
+    
+    
+            poly_line_988659b794daf7e640b94fc0ff7c8bc4.bindTooltip(
+                `<div>
+                     GOLDEN ASCENT: DAMPIER → QINGDAO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_08e2668404b3622680dbef248e75bf32 = L.marker(
+                [-0.8033, 117.1344],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_2c8226d35c26e9c555681f6b5240e6c0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "upload",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_97f8f2013a0e3b421b77a68dfabb9bae = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9a0c7e90b529962fbda8439a869ff637 = $(`<div id="html_9a0c7e90b529962fbda8439a869ff637" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">MARKET_4</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Market</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> TABONEO</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 150,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> GOLDEN ASCENT</p>                             </div>                             </div>`)[0];
+                popup_97f8f2013a0e3b421b77a68dfabb9bae.setContent(html_9a0c7e90b529962fbda8439a869ff637);
+            
+        
+
+        marker_08e2668404b3622680dbef248e75bf32.bindPopup(popup_97f8f2013a0e3b421b77a68dfabb9bae)
+        ;
+
+        
+    
+    
+            marker_08e2668404b3622680dbef248e75bf32.bindTooltip(
+                `<div>
+                     Load: TABONEO (MARKET_4)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_08e2668404b3622680dbef248e75bf32.setIcon(icon_2c8226d35c26e9c555681f6b5240e6c0);
+            
+    
+            var marker_a4229b1ad2b0657a7dad4f5c79158928 = L.marker(
+                [14.247, 80.1246],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_9c0f6c635a87de52dd178f4868656518 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "download",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e2240b94abd7746fd86c066fc7bd59ad = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_94f569349a2720012f6969b44f72086e = $(`<div id="html_94f569349a2720012f6969b44f72086e" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">MARKET_4</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Market</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> KRISHNAPATNAM</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 150,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $515,158</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $21,027/day</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> GOLDEN ASCENT</p>                             </div>                             </div>`)[0];
+                popup_e2240b94abd7746fd86c066fc7bd59ad.setContent(html_94f569349a2720012f6969b44f72086e);
+            
+        
+
+        marker_a4229b1ad2b0657a7dad4f5c79158928.bindPopup(popup_e2240b94abd7746fd86c066fc7bd59ad)
+        ;
+
+        
+    
+    
+            marker_a4229b1ad2b0657a7dad4f5c79158928.bindTooltip(
+                `<div>
+                     Discharge: KRISHNAPATNAM (MARKET_4)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a4229b1ad2b0657a7dad4f5c79158928.setIcon(icon_9c0f6c635a87de52dd178f4868656518);
+            
+    
+            var poly_line_9798b241b818c9e8b8ef18276944c924 = L.polyline(
+                [[-0.8033, 117.1344], [14.247, 80.1246]],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ff7f0e", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+        var popup_c2ded17358b20c640437005abca9c8ac = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7dcc59580e0e5b727c099a572646b5e7 = $(`<div id="html_7dcc59580e0e5b727c099a572646b5e7" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">GOLDEN ASCENT</h4>                                 <p style="margin: 4px 0;"><strong>Cargo:</strong> MARKET_4</p>                                 <p style="margin: 4px 0;"><strong>Route:</strong> TABONEO → KRISHNAPATNAM</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $515,158</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $21,027/day</p>                             </div>                             </div>`)[0];
+                popup_c2ded17358b20c640437005abca9c8ac.setContent(html_7dcc59580e0e5b727c099a572646b5e7);
+            
+        
+
+        poly_line_9798b241b818c9e8b8ef18276944c924.bindPopup(popup_c2ded17358b20c640437005abca9c8ac)
+        ;
+
+        
+    
+    
+            poly_line_9798b241b818c9e8b8ef18276944c924.bindTooltip(
+                `<div>
+                     GOLDEN ASCENT: TABONEO → KRISHNAPATNAM
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_866c9241db0990e5078be3c4246f0141 = L.polyline(
+                [[-20.672, 116.699], [36.0669, 120.3826], [-0.8033, 117.1344], [14.247, 80.1246]],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": "10, 5", "dashOffset": null, "fill": false, "fillColor": "#ff7f0e", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            poly_line_866c9241db0990e5078be3c4246f0141.bindTooltip(
+                `<div>
+                     GOLDEN ASCENT Complete Route
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_16ac04ae1c59230bed56ddabb8a42e63 = L.marker(
+                [-20.31, 118.6236],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_8f13fd0bd87704648308d9f1bbe41ded = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "upload",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0d2dfa0d2078dbcde50f5a5a95ba1c50 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_46025b7b505622138deee439e259e6a7 = $(`<div id="html_46025b7b505622138deee439e259e6a7" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">CARGILL_2</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Committed</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> PORT HEDLAND</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 160,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> ATLANTIC FORTUNE</p>                             </div>                             </div>`)[0];
+                popup_0d2dfa0d2078dbcde50f5a5a95ba1c50.setContent(html_46025b7b505622138deee439e259e6a7);
+            
+        
+
+        marker_16ac04ae1c59230bed56ddabb8a42e63.bindPopup(popup_0d2dfa0d2078dbcde50f5a5a95ba1c50)
+        ;
+
+        
+    
+    
+            marker_16ac04ae1c59230bed56ddabb8a42e63.bindTooltip(
+                `<div>
+                     Load: PORT HEDLAND (CARGILL_2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_16ac04ae1c59230bed56ddabb8a42e63.setIcon(icon_8f13fd0bd87704648308d9f1bbe41ded);
+            
+    
+            var marker_800651c40dec08dda670b2b70e54e228 = L.marker(
+                [34.7529, 119.377],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_3a69e426cedc9579eb8097d421915d70 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "download",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_87819e7fe7cf71de6bb1bef53442bac2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_af2b4a827f6230efc50ec752f83f3d8f = $(`<div id="html_af2b4a827f6230efc50ec752f83f3d8f" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">CARGILL_2</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Committed</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> LIANYUNGANG</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 160,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $137,567</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $5,945/day</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> ATLANTIC FORTUNE</p>                             </div>                             </div>`)[0];
+                popup_87819e7fe7cf71de6bb1bef53442bac2.setContent(html_af2b4a827f6230efc50ec752f83f3d8f);
+            
+        
+
+        marker_800651c40dec08dda670b2b70e54e228.bindPopup(popup_87819e7fe7cf71de6bb1bef53442bac2)
+        ;
+
+        
+    
+    
+            marker_800651c40dec08dda670b2b70e54e228.bindTooltip(
+                `<div>
+                     Discharge: LIANYUNGANG (CARGILL_2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_800651c40dec08dda670b2b70e54e228.setIcon(icon_3a69e426cedc9579eb8097d421915d70);
+            
+    
+            var poly_line_0a32e455f64d9bf31a28a5de29d02e85 = L.polyline(
+                [[-20.31, 118.6236], [34.7529, 119.377]],
+                {"bubblingMouseEvents": true, "color": "#ffbb78", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ffbb78", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+        var popup_c74f0fac3d0623ef4744f5b6307e5abf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fc61c5d8b09b7736e2a4f292095dcbfb = $(`<div id="html_fc61c5d8b09b7736e2a4f292095dcbfb" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">ATLANTIC FORTUNE</h4>                                 <p style="margin: 4px 0;"><strong>Cargo:</strong> CARGILL_2</p>                                 <p style="margin: 4px 0;"><strong>Route:</strong> PORT HEDLAND → LIANYUNGANG</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $137,567</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $5,945/day</p>                             </div>                             </div>`)[0];
+                popup_c74f0fac3d0623ef4744f5b6307e5abf.setContent(html_fc61c5d8b09b7736e2a4f292095dcbfb);
+            
+        
+
+        poly_line_0a32e455f64d9bf31a28a5de29d02e85.bindPopup(popup_c74f0fac3d0623ef4744f5b6307e5abf)
+        ;
+
+        
+    
+    
+            poly_line_0a32e455f64d9bf31a28a5de29d02e85.bindTooltip(
+                `<div>
+                     ATLANTIC FORTUNE: PORT HEDLAND → LIANYUNGANG
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_9450959a2a77aa1a1e853b456fde337c = L.polyline(
+                [[-20.31, 118.6236], [34.7529, 119.377]],
+                {"bubblingMouseEvents": true, "color": "#ffbb78", "dashArray": "10, 5", "dashOffset": null, "fill": false, "fillColor": "#ffbb78", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            poly_line_9450959a2a77aa1a1e853b456fde337c.bindTooltip(
+                `<div>
+                     ATLANTIC FORTUNE Complete Route
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2a27d0816b4cd72c7bcfcd5221080707 = L.marker(
+                [-22.9332, -43.8378],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_707d60bc5b4393aa7069e6d8e50b8727 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "upload",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_81f033fddb853c50332e2c0a21ca8026 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_175cebcca8d4f4e8f913867b4caa1214 = $(`<div id="html_175cebcca8d4f4e8f913867b4caa1214" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">CARGILL_3</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Committed</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> ITAGUAI</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 180,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> CORAL EMPEROR</p>                             </div>                             </div>`)[0];
+                popup_81f033fddb853c50332e2c0a21ca8026.setContent(html_175cebcca8d4f4e8f913867b4caa1214);
+            
+        
+
+        marker_2a27d0816b4cd72c7bcfcd5221080707.bindPopup(popup_81f033fddb853c50332e2c0a21ca8026)
+        ;
+
+        
+    
+    
+            marker_2a27d0816b4cd72c7bcfcd5221080707.bindTooltip(
+                `<div>
+                     Load: ITAGUAI (CARGILL_3)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2a27d0816b4cd72c7bcfcd5221080707.setIcon(icon_707d60bc5b4393aa7069e6d8e50b8727);
+            
+    
+            var marker_34e0f26e651a1f55bd94804cca3fb814 = L.marker(
+                [36.0669, 120.3826],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_ad6f3af60d03d66ea5f08d2cb926bb4e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "download",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_29dbf876c80e73e68afb5c3e5ca01cb9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_56bad5dae1ad6d36a5b7c8d4ee732871 = $(`<div id="html_56bad5dae1ad6d36a5b7c8d4ee732871" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">CARGILL_3</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Committed</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> QINGDAO</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 180,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $1,363,663</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $19,966/day</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> CORAL EMPEROR</p>                             </div>                             </div>`)[0];
+                popup_29dbf876c80e73e68afb5c3e5ca01cb9.setContent(html_56bad5dae1ad6d36a5b7c8d4ee732871);
+            
+        
+
+        marker_34e0f26e651a1f55bd94804cca3fb814.bindPopup(popup_29dbf876c80e73e68afb5c3e5ca01cb9)
+        ;
+
+        
+    
+    
+            marker_34e0f26e651a1f55bd94804cca3fb814.bindTooltip(
+                `<div>
+                     Discharge: QINGDAO (CARGILL_3)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_34e0f26e651a1f55bd94804cca3fb814.setIcon(icon_ad6f3af60d03d66ea5f08d2cb926bb4e);
+            
+    
+            var poly_line_973b5d86aa71f2095100cdae0e56b6d7 = L.polyline(
+                [[-22.9332, -43.8378], [36.0669, 120.3826]],
+                {"bubblingMouseEvents": true, "color": "#98df8a", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#98df8a", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+        var popup_255a6f25ccb2f204343ce1f8790c3f90 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cbd7a20fb586664cf44d7acf4fe437cd = $(`<div id="html_cbd7a20fb586664cf44d7acf4fe437cd" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">CORAL EMPEROR</h4>                                 <p style="margin: 4px 0;"><strong>Cargo:</strong> CARGILL_3</p>                                 <p style="margin: 4px 0;"><strong>Route:</strong> ITAGUAI → QINGDAO</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $1,363,663</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $19,966/day</p>                             </div>                             </div>`)[0];
+                popup_255a6f25ccb2f204343ce1f8790c3f90.setContent(html_cbd7a20fb586664cf44d7acf4fe437cd);
+            
+        
+
+        poly_line_973b5d86aa71f2095100cdae0e56b6d7.bindPopup(popup_255a6f25ccb2f204343ce1f8790c3f90)
+        ;
+
+        
+    
+    
+            poly_line_973b5d86aa71f2095100cdae0e56b6d7.bindTooltip(
+                `<div>
+                     CORAL EMPEROR: ITAGUAI → QINGDAO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e3d9dbc998d6ecfa5ce1e69e49d1edf7 = L.polyline(
+                [[-22.9332, -43.8378], [36.0669, 120.3826]],
+                {"bubblingMouseEvents": true, "color": "#98df8a", "dashArray": "10, 5", "dashOffset": null, "fill": false, "fillColor": "#98df8a", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            poly_line_e3d9dbc998d6ecfa5ce1e69e49d1edf7.bindTooltip(
+                `<div>
+                     CORAL EMPEROR Complete Route
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e7c11de57bbce61bc2132c7bafd8b676 = L.marker(
+                [10.6392, -15.3812],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_7348e52c4700504970c0daa195fadeed = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "upload",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c484e6ee86ca483d4fe9785b8c2e1176 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_89783892507495c90eec5751a12261d4 = $(`<div id="html_89783892507495c90eec5751a12261d4" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">CARGILL_1</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Committed</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> KAMSAR ANCHORAGE</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 180,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> IRON CENTURY</p>                             </div>                             </div>`)[0];
+                popup_c484e6ee86ca483d4fe9785b8c2e1176.setContent(html_89783892507495c90eec5751a12261d4);
+            
+        
+
+        marker_e7c11de57bbce61bc2132c7bafd8b676.bindPopup(popup_c484e6ee86ca483d4fe9785b8c2e1176)
+        ;
+
+        
+    
+    
+            marker_e7c11de57bbce61bc2132c7bafd8b676.bindTooltip(
+                `<div>
+                     Load: KAMSAR ANCHORAGE (CARGILL_1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e7c11de57bbce61bc2132c7bafd8b676.setIcon(icon_7348e52c4700504970c0daa195fadeed);
+            
+    
+            var marker_1ce9f4d3da9161f595cfa1b6ae9dc199 = L.marker(
+                [36.0669, 120.3826],
+                {
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            var icon_d46722a58cfbd2616f234bc557ae9e7a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "download",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_337887be6289bb652766d5de38a8d1b0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4e81b7cea803139e1e32f162a1faa884 = $(`<div id="html_4e81b7cea803139e1e32f162a1faa884" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">CARGILL_1</h4>                                 <p style="margin: 4px 0;"><strong>Type:</strong> Committed</p>                                 <p style="margin: 4px 0;"><strong>Port:</strong> QINGDAO</p>                                 <p style="margin: 4px 0;"><strong>Quantity:</strong> 180,000 MT</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $1,872,323</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $29,385/day</p>                                 <p style="margin: 4px 0;"><strong>Vessel:</strong> IRON CENTURY</p>                             </div>                             </div>`)[0];
+                popup_337887be6289bb652766d5de38a8d1b0.setContent(html_4e81b7cea803139e1e32f162a1faa884);
+            
+        
+
+        marker_1ce9f4d3da9161f595cfa1b6ae9dc199.bindPopup(popup_337887be6289bb652766d5de38a8d1b0)
+        ;
+
+        
+    
+    
+            marker_1ce9f4d3da9161f595cfa1b6ae9dc199.bindTooltip(
+                `<div>
+                     Discharge: QINGDAO (CARGILL_1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1ce9f4d3da9161f595cfa1b6ae9dc199.setIcon(icon_d46722a58cfbd2616f234bc557ae9e7a);
+            
+    
+            var poly_line_8fbf36b61291d88de0adcddb8bd689c9 = L.polyline(
+                [[10.6392, -15.3812], [36.0669, 120.3826]],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#1f77b4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+        var popup_bd9b4dff2a1887122ca2b16a5356a3de = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a3bc44c50f41e4d30a872ec2eae8765e = $(`<div id="html_a3bc44c50f41e4d30a872ec2eae8765e" style="width: 100.0%; height: 100.0%;">                             <div style="font-family: Arial, sans-serif;">                                 <h4 style="margin: 0 0 8px 0; color: #2d333a;">IRON CENTURY</h4>                                 <p style="margin: 4px 0;"><strong>Cargo:</strong> CARGILL_1</p>                                 <p style="margin: 4px 0;"><strong>Route:</strong> KAMSAR ANCHORAGE → QINGDAO</p>                                 <p style="margin: 4px 0;"><strong>Profit:</strong> $1,872,323</p>                                 <p style="margin: 4px 0;"><strong>TCE:</strong> $29,385/day</p>                             </div>                             </div>`)[0];
+                popup_bd9b4dff2a1887122ca2b16a5356a3de.setContent(html_a3bc44c50f41e4d30a872ec2eae8765e);
+            
+        
+
+        poly_line_8fbf36b61291d88de0adcddb8bd689c9.bindPopup(popup_bd9b4dff2a1887122ca2b16a5356a3de)
+        ;
+
+        
+    
+    
+            poly_line_8fbf36b61291d88de0adcddb8bd689c9.bindTooltip(
+                `<div>
+                     IRON CENTURY: KAMSAR ANCHORAGE → QINGDAO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_88cf6545456a552a46f1a73c12b1e378 = L.polyline(
+                [[10.6392, -15.3812], [36.0669, 120.3826]],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": "10, 5", "dashOffset": null, "fill": false, "fillColor": "#1f77b4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+        
+    
+            poly_line_88cf6545456a552a46f1a73c12b1e378.bindTooltip(
+                `<div>
+                     IRON CENTURY Complete Route
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_c02251e31450ce3ec1a092ba32adab9a_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_c986bbabd8d959452d8a3ac2199fd8c2,
+                    "cartodbpositron" : tile_layer_1e1cb96f716461610d749eed8c3ac8e0,
+                    "cartodbdarkmatter" : tile_layer_747c8d4b85ecc3dae7bd9ddb4895e795,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_c02251e31450ce3ec1a092ba32adab9a = L.control.layers(
+                layer_control_c02251e31450ce3ec1a092ba32adab9a_layers.base_layers,
+                layer_control_c02251e31450ce3ec1a092ba32adab9a_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_44de0541922b5ee965ea4a66671d4ec8);
+
+        
+</script>
+</html>

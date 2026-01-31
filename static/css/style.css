@@ -149,6 +149,7 @@ body {
     position: relative;
 }
 
+
 .chat-header {
     background-color: var(--claude-bg);
     border-bottom: 1px solid var(--claude-border);
@@ -654,4 +655,12 @@ body {
     border: none;
     border-top: 1px solid var(--claude-border);
     margin: 24px 0;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    font-size: 13px;
+    color: var(--claude-text-secondary);
+    margin-top: 8px;
+    font-style: italic;
 }
