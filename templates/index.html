@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyage Optimization Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="theme-color" content="#10a37f">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <div style="width: 24px; height: 24px; background: linear-gradient(135deg, #10a37f 0%, #0d8c6f 100%); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h1>Voyage Assistant</h1>
+                </div>
+                <p class="subtitle">Cargill Ocean Transportation</p>
+            </div>
+            <div class="sidebar-actions">
+                <button class="btn-secondary" id="resetBtn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8 1V3M8 13V15M3 8H1M15 8H13M3.343 3.343L4.757 4.757M11.243 11.243L12.657 12.657M3.343 12.657L4.757 11.243M11.243 4.757L12.657 3.343" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    New Chat
+                </button>
+            </div>
+            <div class="sidebar-footer">
+                <div class="status-indicator" id="statusIndicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Ready</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Chat Header -->
+            <header class="chat-header">
+                <h2>Voyage Optimization Assistant</h2>
+                <p>Professional shipping analytics powered by AI</p>
+            </header>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-message">
+                    <h3>Welcome to Voyage Optimization Assistant</h3>
+                    <p>I can help you understand:</p>
+                    <ul>
+                        <li>Optimal vessel-cargo assignments</li>
+                        <li>Profit and TCE analysis</li>
+                        <li>Risk-adjusted voyage economics</li>
+                        <li>Scenario analysis and thresholds</li>
+                        <li>Trade-offs between alternatives</li>
+                    </ul>
+                    <p class="example-prompts">Try asking: "What is the best voyage for PACIFIC GLORY?" or "Compare the top 3 most profitable voyages"</p>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Ask about voyage optimization, profits, TCE, risk analysis..."
+                        rows="1"
+                    ></textarea>
+                    <button id="sendBtn" class="send-button" disabled>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M18 2L9 11M18 2L12 18L9 11M18 2L2 8L9 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="input-hint">Press Enter to send, Shift+Enter for new line</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Voyage Chatbot Configuration
+# ==============================
+# Update the values below with your actual API keys
+# Do not use quotes around the values
+
+TEAM_API_KEY=LO42oQ7rxU3lbqZ3xV3Cva0CrTHNN1KHuoEPzCd0
+SHARED_OPENAI_KEY=949c3fe90ba2d4c5b630aa3f922f9fbd9fe05e081c761041
+
+# Optional: Model selection (leave as default if unsure)
+CHATBOT_MODEL=global.anthropic.claude-sonnet-4-5-20250929-v1:0
