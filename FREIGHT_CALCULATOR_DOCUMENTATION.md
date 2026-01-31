@@ -1784,15 +1784,31 @@ A **structured scenario analysis** framework has been implemented to test the ro
 **Objective**: Identify the fuel price increase percentage where the current optimal solution becomes less profitable than alternatives.
 
 **Implementation**:
-- Applies uniform percentage increase to all VLSFO prices across all ports
-- Uses binary search to find threshold (tolerance: 0.01 multiplier)
-- Tests up to 300% price increase (3.0x multiplier)
+- Applies uniform percentage increase to all VLSFO prices across all ports via `bunker_price_multiplier`
+- Step-based iteration: tests 0% to 300% (3.0× multiplier) in configurable step increments (default: 10%)
+- Uses `FreightCalculator.scenario_bunker_increase()` in `freight_calculator.py`
+- Optional `apply_ml_risks=False` for faster runs (skips Monte Carlo risk simulation)
+- Early exit: stops 20 percentage points after first assignment change (when detected)
 
 **Outputs**:
 - Threshold price multiplier and percentage increase
 - Base vs. threshold profit comparison
 - Assignment signature changes
 - Economic intuition explanation
+
+**Results** (from `processed/scenario_bunker_increase.csv`):
+
+| Bunker Increase | Multiplier | Portfolio Profit | Avg TCE | Assignment Changed | Key Change |
+|-----------------|------------|------------------|---------|--------------------|------------|
+| 0% | 1.0 | $1,487,513 | $19,226/day | No | Base: OCEAN HORIZON→0, GOLDEN ASCENT→2, ANN BELL→1, PACIFIC GLORY→8 |
+| 10% | 1.1 | $860,983 | $16,555/day | **Yes** | PACIFIC GLORY switches from cargo 8 to cargo 6 (shorter route) |
+| 20% | 1.2 | $355,484 | $14,183/day | Yes | Further assignment shifts as fuel sensitivity increases |
+| 30% | 1.3 | -$145,254 | $11,290/day | Yes | Portfolio profit turns negative |
+
+**Solution / Interpretation**:
+- **Assignment change threshold**: ~10% VLSFO increase — optimal vessel-cargo assignments begin to shift
+- **Break-even threshold**: ~25–30% — portfolio profit goes negative (between 20% and 30% in step-based test)
+- **Key insight**: PACIFIC GLORY moves from West Africa–India (Bauxite) cargo to a shorter-distance cargo at 10% fuel increase, illustrating that higher fuel prices favor shorter routes and more fuel-efficient deployments
 
 **Economic Intuition**:
 - Higher fuel prices favor shorter-distance routes
@@ -1803,8 +1819,14 @@ A **structured scenario analysis** framework has been implemented to test the ro
 
 ### 11.4 Technical Implementation
 
-**Module**: `scenario_analysis.py`
-- `ScenarioAnalyzer` class: Main analysis engine
+**Module**: `freight_calculator.py`
+- `FreightCalculator` class: Main calculator and scenario engine
+- `scenario_china_delay()`: China port delay threshold analysis (step-based)
+- `scenario_bunker_increase()`: Bunker price increase threshold analysis (step-based)
+- Output: `processed/scenario_china_delay.csv`, `processed/scenario_bunker_increase.csv`
+
+**Module** (alternative): `scenario_analysis.py`
+- `ScenarioAnalyzer` class: Standalone scenario analysis engine
 - `analyze_port_delay_scenario()`: Port delay threshold analysis
 - `analyze_bunker_price_scenario()`: Bunker price threshold analysis
 - `generate_scenario_report()`: Comprehensive report generation
@@ -1829,11 +1851,11 @@ A **structured scenario analysis** framework has been implemented to test the ro
 **Assumptions**:
 1. **Uniform Application**: Port delays apply uniformly to all Chinese ports (load and discharge)
 2. **Uniform Fuel Price**: Bunker price increases apply uniformly across all ports
-3. **Binary Search**: Threshold detection uses binary search (may miss multiple thresholds)
+3. **Step-Based Search**: `freight_calculator.py` uses step-based iteration (configurable step); `scenario_analysis.py` may use binary search
 4. **Assignment Signature**: Changes detected by comparing assignment patterns (vessel-cargo pairs)
 
 **Limitations**:
-1. **Single Threshold**: Binary search finds one threshold; multiple thresholds may exist
+1. **Single Threshold**: Step-based or binary search finds one threshold; multiple thresholds may exist
 2. **Discrete Changes**: Only detects when entire assignment pattern changes, not gradual shifts
 3. **No Stochastic Analysis**: Scenarios are deterministic; doesn't account for uncertainty in thresholds
 4. **Computational Cost**: Each scenario test requires full optimization re-run

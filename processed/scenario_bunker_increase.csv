@@ -1,7 +1,5 @@
 Bunker_Increase_Pct,Bunker_Multiplier,Total_Portfolio_Profit,Avg_TCE,Assignment_Changed,Assignments
 0,1.0,1487513.0,19226.0,False,"{""0"": ""OCEAN HORIZON"", ""2"": ""GOLDEN ASCENT"", ""1"": ""ANN BELL"", ""8"": ""PACIFIC GLORY""}"
-5,1.05,1135822.0,17887.0,True,"{""0"": ""OCEAN HORIZON"", ""2"": ""GOLDEN ASCENT"", ""1"": ""ANN BELL"", ""6"": ""PACIFIC GLORY""}"
 10,1.1,860983.0,16555.0,True,"{""0"": ""OCEAN HORIZON"", ""2"": ""GOLDEN ASCENT"", ""1"": ""ANN BELL"", ""6"": ""PACIFIC GLORY""}"
-15,1.15,605853.0,15629.0,True,"{""0"": ""OCEAN HORIZON"", ""2"": ""GOLDEN ASCENT"", ""1"": ""ANN BELL""}"
 20,1.2,355484.0,14183.0,True,"{""0"": ""OCEAN HORIZON"", ""2"": ""GOLDEN ASCENT"", ""1"": ""ANN BELL""}"
-25,1.25,105115.0,12737.0,True,"{""0"": ""OCEAN HORIZON"", ""2"": ""GOLDEN ASCENT"", ""1"": ""ANN BELL""}"
+30,1.3,-145254.0,11290.0,True,"{""0"": ""OCEAN HORIZON"", ""2"": ""GOLDEN ASCENT"", ""1"": ""ANN BELL""}"

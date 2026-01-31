@@ -351,6 +351,14 @@ class FreightCalculator:
         else:
             tce = 0
 
+        # ── Profit (for Cargill vessels) ──────────────────────────────────
+        if pd.notna(hire_rate) and hire_rate > 0:
+            daily_profit = tce - hire_rate
+            total_profit = daily_profit * total_voyage_days
+        else:
+            daily_profit = np.nan
+            total_profit = np.nan
+
         # ── ML Risk Simulation & Adjustments ───────────────────────────────
         risk_profile = None
         risk_adjusted_days = total_voyage_days
@@ -400,14 +408,6 @@ class FreightCalculator:
                 risk_adjusted_profit = risk_adjusted_daily_profit * risk_adjusted_days
             else:
                 risk_adjusted_profit = np.nan
-        
-        # ── Profit (for Cargill vessels) ──────────────────────────────────
-        if pd.notna(hire_rate) and hire_rate > 0:
-            daily_profit = tce - hire_rate
-            total_profit = daily_profit * total_voyage_days
-        else:
-            daily_profit = np.nan
-            total_profit = np.nan
 
         result = {
             "Vessel": vessel_name,
@@ -599,6 +599,7 @@ class FreightCalculator:
         speed_mode="warranted",
         extra_china_delay_days=0,
         bunker_price_multiplier=1.0,
+        apply_ml_risks=True,
     ):
         """
         Calculate TCE for every vessel-cargo combination.
@@ -612,6 +613,7 @@ class FreightCalculator:
                     speed_mode=speed_mode,
                     extra_china_delay_days=extra_china_delay_days,
                     bunker_price_multiplier=bunker_price_multiplier,
+                    apply_ml_risks=apply_ml_risks,
                 )
                 if voyage is not None:
                     results.append(voyage)
@@ -626,6 +628,7 @@ class FreightCalculator:
         speed_mode="warranted",
         extra_china_delay_days=0,
         bunker_price_multiplier=1.0,
+        apply_ml_risks=True,
     ):
         """
         Find the optimal vessel-cargo assignment that maximizes total
@@ -643,6 +646,7 @@ class FreightCalculator:
             speed_mode=speed_mode,
             extra_china_delay_days=extra_china_delay_days,
             bunker_price_multiplier=bunker_price_multiplier,
+            apply_ml_risks=apply_ml_risks,
         )
 
         if all_combos.empty:
@@ -722,12 +726,14 @@ class FreightCalculator:
 
     # ── Scenario Analysis ─────────────────────────────────────────────────
 
-    def scenario_china_delay(self, base_assignments, max_delay=60):
+    def scenario_china_delay(self, base_assignments, max_delay=60, step=5, apply_ml_risks=False):
         """
         Scenario 1: Find the number of additional China port delay days
         that makes the current recommendation no longer optimal.
 
-        Tests every delay value from 0 to max_delay.
+        Tests delay values from 0 to max_delay in step increments.
+        Use step=1 for fine resolution (slower), step=5 or 10 for faster runs.
+        apply_ml_risks=False speeds up significantly by skipping Monte Carlo simulation.
         """
         results = []
         base_vessels = {
@@ -737,9 +743,10 @@ class FreightCalculator:
 
         first_change_delay = None
 
-        for delay in range(0, max_delay + 1):
+        for delay in range(0, max_delay + 1, step):
             new_assignments, _ = self.optimize_portfolio(
-                extra_china_delay_days=delay
+                extra_china_delay_days=delay,
+                apply_ml_risks=apply_ml_risks,
             )
 
             if new_assignments.empty:
@@ -777,12 +784,13 @@ class FreightCalculator:
 
         return pd.DataFrame(results)
 
-    def scenario_bunker_increase(self, base_assignments, max_pct=300, step=5):
+    def scenario_bunker_increase(self, base_assignments, max_pct=300, step=10, apply_ml_risks=False):
         """
         Scenario 2: Find the VLSFO price increase (%) at which the current
         recommendation becomes less profitable than the next best option.
 
         Tests from 0% to max_pct in step increments.
+        Use step=10 or 20 for faster runs. apply_ml_risks=False speeds up significantly.
         """
         results = []
         base_vessels = {
@@ -795,7 +803,8 @@ class FreightCalculator:
         for pct in range(0, max_pct + 1, step):
             multiplier = 1.0 + pct / 100.0
             new_assignments, _ = self.optimize_portfolio(
-                bunker_price_multiplier=multiplier
+                bunker_price_multiplier=multiplier,
+                apply_ml_risks=apply_ml_risks,
             )
 
             if new_assignments.empty:

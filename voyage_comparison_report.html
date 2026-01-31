@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3404b8dcb82052b265d547ffaa0155d0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3404b8dcb82052b265d547ffaa0155d0" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3404b8dcb82052b265d547ffaa0155d0 = L.map(
+                "map_3404b8dcb82052b265d547ffaa0155d0",
+                {
+                    center: [20.0, 60.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7f93d84b57b9f50ba05ec48c414fb30b = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7f93d84b57b9f50ba05ec48c414fb30b.addTo(map_3404b8dcb82052b265d547ffaa0155d0);
+        
+    
+            var marker_3491b9930facdd89adf173e80c04f0d1 = L.marker(
+                [-20.2857, -40.243],
+                {
+}
+            ).addTo(map_3404b8dcb82052b265d547ffaa0155d0);
+        
+    
+            var icon_45818f15b6735b3858e167f8b53dce78 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_20140b3ceeb7b13db079d0d14281ea03 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_da14ca642993e88722c46642a1cfe635 = $(`<div id="html_da14ca642993e88722c46642a1cfe635" style="width: 100.0%; height: 100.0%;">Load: Tubarao_Brazil</div>`)[0];
+                popup_20140b3ceeb7b13db079d0d14281ea03.setContent(html_da14ca642993e88722c46642a1cfe635);
+            
+        
+
+        marker_3491b9930facdd89adf173e80c04f0d1.bindPopup(popup_20140b3ceeb7b13db079d0d14281ea03)
+        ;
+
+        
+    
+    
+                marker_3491b9930facdd89adf173e80c04f0d1.setIcon(icon_45818f15b6735b3858e167f8b53dce78);
+            
+    
+            var marker_fee225fa3c447265079040a15e39d65d = L.marker(
+                [4.1647, 100.6153],
+                {
+}
+            ).addTo(map_3404b8dcb82052b265d547ffaa0155d0);
+        
+    
+            var icon_2958b52a1e1231631838a82dd1d5b4eb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_428803d8f290976eb399bf29bf09eb4f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_22d8809a03312e12299b14e070e15cab = $(`<div id="html_22d8809a03312e12299b14e070e15cab" style="width: 100.0%; height: 100.0%;">Discharge: Teluk Rubiah_Malaysia</div>`)[0];
+                popup_428803d8f290976eb399bf29bf09eb4f.setContent(html_22d8809a03312e12299b14e070e15cab);
+            
+        
+
+        marker_fee225fa3c447265079040a15e39d65d.bindPopup(popup_428803d8f290976eb399bf29bf09eb4f)
+        ;
+
+        
+    
+    
+                marker_fee225fa3c447265079040a15e39d65d.setIcon(icon_2958b52a1e1231631838a82dd1d5b4eb);
+            
+    
+            var poly_line_4e77330f04fd6989e3334f5ef6d31890 = L.polyline(
+                [[-20.2857, -40.243], [4.1647, 100.6153]],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2ecc71", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3404b8dcb82052b265d547ffaa0155d0);
+        
+    
+        var popup_5dde783a68c7d9ce7787a01407350e7c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c99e0106c7109e668f7137e636d58a3c = $(`<div id="html_c99e0106c7109e668f7137e636d58a3c" style="width: 100.0%; height: 100.0%;">ANN BELL: Brazil – Malaysia (Iron Ore) ($1.0M)</div>`)[0];
+                popup_5dde783a68c7d9ce7787a01407350e7c.setContent(html_c99e0106c7109e668f7137e636d58a3c);
+            
+        
+
+        poly_line_4e77330f04fd6989e3334f5ef6d31890.bindPopup(popup_5dde783a68c7d9ce7787a01407350e7c)
+        ;
+
+        
+    
+    
+            var marker_901df8cccc9fcc8c170ce910222971a4 = L.marker(
+                [49.2965, -123.1338],
+                {
+}
+            ).addTo(map_3404b8dcb82052b265d547ffaa0155d0);
+        
+    
+            var icon_c4fcabbb1022259f332d5474d7179616 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4185ab78280849697f0667ab90152c99 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d3adf697a110dabd4dcdf14c55ac6b3f = $(`<div id="html_d3adf697a110dabd4dcdf14c55ac6b3f" style="width: 100.0%; height: 100.0%;">Load: Vancouver_Canada</div>`)[0];
+                popup_4185ab78280849697f0667ab90152c99.setContent(html_d3adf697a110dabd4dcdf14c55ac6b3f);
+            
+        
+
+        marker_901df8cccc9fcc8c170ce910222971a4.bindPopup(popup_4185ab78280849697f0667ab90152c99)
+        ;
+
+        
+    
+    
+                marker_901df8cccc9fcc8c170ce910222971a4.setIcon(icon_c4fcabbb1022259f332d5474d7179616);
+            
+    
+            var marker_780b734383841c9b0c4fe3b13061808f = L.marker(
+                [21.5878, 108.3705],
+                {
+}
+            ).addTo(map_3404b8dcb82052b265d547ffaa0155d0);
+        
+    
+            var icon_96854188bd4bd1a67c29680cdbfd6452 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_84b982b818a65de6160b59d9cc395679 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4115ae39c9487ed30b5c3118c0b26d6b = $(`<div id="html_4115ae39c9487ed30b5c3118c0b26d6b" style="width: 100.0%; height: 100.0%;">Discharge: Fangcheng_China</div>`)[0];
+                popup_84b982b818a65de6160b59d9cc395679.setContent(html_4115ae39c9487ed30b5c3118c0b26d6b);
+            
+        
+
+        marker_780b734383841c9b0c4fe3b13061808f.bindPopup(popup_84b982b818a65de6160b59d9cc395679)
+        ;
+
+        
+    
+    
+                marker_780b734383841c9b0c4fe3b13061808f.setIcon(icon_96854188bd4bd1a67c29680cdbfd6452);
+            
+    
+            var poly_line_4516b4bdc637b50df2b740f14e32af9f = L.polyline(
+                [[49.2965, -123.1338], [21.5878, 108.3705]],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e74c3c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_3404b8dcb82052b265d547ffaa0155d0);
+        
+    
+        var popup_5a030089f9be2ac798b417b50830a2bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0019fbe4bf63d5f3e675d4430795b910 = $(`<div id="html_0019fbe4bf63d5f3e675d4430795b910" style="width: 100.0%; height: 100.0%;">OCEAN HORIZON: Canada – China (Coking Coal) ($-0.6M)</div>`)[0];
+                popup_5a030089f9be2ac798b417b50830a2bd.setContent(html_0019fbe4bf63d5f3e675d4430795b910);
+            
+        
+
+        poly_line_4516b4bdc637b50df2b740f14e32af9f.bindPopup(popup_5a030089f9be2ac798b417b50830a2bd)
+        ;
+
+        
+    
+</script>
+</html>
