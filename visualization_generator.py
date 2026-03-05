@@ -30,24 +30,33 @@ plt.rcParams.update({
 })
 
 def load_portfolio_data():
-    """Load portfolio data from JSON files."""
-    portfolio_path = Path('processed/portfolio_summary.json')
+    """Load portfolio data from JSON files. Uses risk_adjusted file as source of truth."""
     risk_path = Path('processed/portfolio_summary_risk_adjusted.json')
     
     portfolio = {}
     risk_adjusted = {}
     
     try:
-        if portfolio_path.exists():
-            with open(portfolio_path) as f:
-                portfolio = json.load(f)
-    except Exception as e:
-        print(f"Warning: Could not load portfolio data: {e}")
-    
-    try:
         if risk_path.exists():
             with open(risk_path) as f:
                 risk_adjusted = json.load(f)
+            
+            # Extract base data from risk_adjusted structure
+            portfolio = {
+                'total_portfolio_profit': risk_adjusted.get('base_portfolio_profit', 0),
+                'assignments': []
+            }
+            # Convert risk-adjusted assignments to base format
+            for assignment in risk_adjusted.get('assignments', []):
+                base_assignment = {
+                    'Vessel_Name': assignment.get('vessel', 'Unknown'),
+                    'Cargo_ID': assignment.get('cargo', assignment.get('route', 'Unknown')),
+                    'Leg_Profit': assignment.get('base_profit', 0),
+                    'TCE_Leg': assignment.get('base_tce', 0),
+                    'Leg_Days': assignment.get('voyage_days', 0),
+                    'Cargo_Type': 'Market' if 'MARKET' in str(assignment.get('cargo', '')).upper() else 'Committed'
+                }
+                portfolio['assignments'].append(base_assignment)
     except Exception as e:
         print(f"Warning: Could not load risk-adjusted data: {e}")
     

@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment
+.env
+.venv
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+diagrams/*.png
+diagrams/*.html
+!diagrams/.gitkeep
+*.log
+chatbot_config.txt
+
+# Generated output files
+*.csv
+!data/*.csv
+!processed/*.csv
+*.html
+*.json
+!processed/*.json
+
+# Jupyter
+.ipynb_checkpoints/
+# Keep main notebooks
+!vessel_cargo_optimization_multileg.ipynb
+
+# Data (if sensitive)
+# data/*.csv

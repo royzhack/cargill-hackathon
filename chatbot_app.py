@@ -50,13 +50,22 @@ CORS(app)
 chatbot = None
 
 def init_chatbot():
-    """Initialize the chatbot with API keys from config."""
+    """Initialize the chatbot with API keys from environment variables or config file."""
     global chatbot
     try:
-        config = load_env_file("chatbot_config.txt")
-        team_key = config.get('TEAM_API_KEY')
-        shared_key = config.get('SHARED_OPENAI_KEY')
-        model = config.get('CHATBOT_MODEL', 'global.anthropic.claude-sonnet-4-5-20250929-v1:0')
+        import os
+        
+        # Try environment variables first (for production deployment)
+        team_key = os.getenv('TEAM_API_KEY')
+        shared_key = os.getenv('SHARED_OPENAI_KEY')
+        model = os.getenv('CHATBOT_MODEL', 'global.anthropic.claude-sonnet-4-5-20250929-v1:0')
+        
+        # Fall back to config file (for local development)
+        if not team_key or not shared_key:
+            config = load_env_file("chatbot_config.txt")
+            team_key = team_key or config.get('TEAM_API_KEY')
+            shared_key = shared_key or config.get('SHARED_OPENAI_KEY')
+            model = model or config.get('CHATBOT_MODEL', 'global.anthropic.claude-sonnet-4-5-20250929-v1:0')
         
         if team_key and shared_key and team_key != "your-team-api-key-here":
             chatbot = VoyageChatbot(
@@ -262,15 +271,21 @@ if __name__ == '__main__':
     if init_chatbot():
         print("✓ Chatbot initialized successfully")
     else:
-        print("⚠ Chatbot not initialized - check chatbot_config.txt")
+        print("⚠ Chatbot not initialized - check chatbot_config.txt or environment variables")
     
     # Run Flask app
+    # Use port from environment or default to 5000
+    import os
+    port = int(os.getenv('PORT', 5000))
+    debug = os.getenv('FLASK_ENV') != 'production'
+    
     # Use port 5001 if 5000 is in use (macOS ControlCenter sometimes uses 5000)
-    import socket
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    port = 5000
-    if sock.connect_ex(('localhost', 5000)) == 0:
-        port = 5001
-        print(f"⚠ Port 5000 in use, using port {port} instead")
-    sock.close()
-    app.run(debug=True, host='0.0.0.0', port=port)
+    if port == 5000:
+        import socket
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        if sock.connect_ex(('localhost', 5000)) == 0:
+            port = 5001
+            print(f"⚠ Port 5000 in use, using port {port} instead")
+        sock.close()
+    
+    app.run(debug=debug, host='0.0.0.0', port=port)

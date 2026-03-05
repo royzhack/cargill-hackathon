@@ -18,18 +18,44 @@ def create_vessel_routes_map():
     Returns path to generated HTML file.
     """
     try:
-        # Load portfolio data
-        portfolio_path = Path('processed/portfolio_summary.json')
+        # Load portfolio data - use risk_adjusted file as source of truth
+        portfolio_path = Path('processed/portfolio_summary_risk_adjusted.json')
         if not portfolio_path.exists():
             return None
         
         with open(portfolio_path) as f:
-            portfolio = json.load(f)
+            risk_data = json.load(f)
         
-        if 'assignments' not in portfolio or len(portfolio['assignments']) == 0:
+        if 'assignments' not in risk_data or len(risk_data['assignments']) == 0:
             return None
         
-        assignments = portfolio['assignments']
+        # Convert risk-adjusted assignments to expected format
+        assignments = []
+        for assignment in risk_data['assignments']:
+            # Parse route to get ports
+            route = assignment.get('route', '')
+            load_port = assignment.get('load_port', '')
+            discharge_port = assignment.get('discharge_port', '')
+            
+            if not load_port or not discharge_port:
+                if '→' in route or '->' in route:
+                    parts = route.replace('→', '->').split('->')
+                    if len(parts) == 2:
+                        load_port = parts[0].strip()
+                        discharge_port = parts[1].strip()
+            
+            converted_assignment = {
+                'Vessel_Name': assignment.get('vessel', 'Unknown'),
+                'Cargo_ID': assignment.get('cargo', assignment.get('route', 'Unknown')),
+                'Load_Port': load_port,
+                'Discharge_Port': discharge_port,
+                'Leg_Profit': assignment.get('base_profit', 0),
+                'TCE_Leg': assignment.get('base_tce', 0),
+                'Leg_Days': assignment.get('voyage_days', 0),
+                'Vessel_Type': assignment.get('fleet', 'Unknown'),
+                'Cargo_Type': 'Market' if 'MARKET' in str(assignment.get('cargo', '')).upper() else 'Committed'
+            }
+            assignments.append(converted_assignment)
         
         # Load port locations
         port_locations_path = Path('data/port_locations.csv')
@@ -41,8 +67,10 @@ def create_vessel_routes_map():
         # Calculate map center from all ports used
         all_ports = set()
         for assignment in assignments:
-            all_ports.add(assignment.get('Load_Port'))
-            all_ports.add(assignment.get('Discharge_Port'))
+            if assignment.get('Load_Port'):
+                all_ports.add(assignment.get('Load_Port'))
+            if assignment.get('Discharge_Port'):
+                all_ports.add(assignment.get('Discharge_Port'))
         
         # Get coordinates for all ports
         port_coords = {}

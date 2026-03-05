@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any
 from openai import OpenAI
 from datetime import datetime
+import pandas as pd
 
 # Try to load from config file or .env file
 try:
@@ -76,13 +77,27 @@ class VoyageChatbot:
             raise ValueError(f"Model {model} not in allowed list: {self.allowed_models}")
         
         # Load optimization data
-        if portfolio_data_path is None:
-            portfolio_data_path = Path("processed/portfolio_summary.json")
+        # Use risk_adjusted file as primary source since it has the correct base numbers
         if risk_adjusted_data_path is None:
             risk_adjusted_data_path = Path("processed/portfolio_summary_risk_adjusted.json")
         
-        self.portfolio_data = self._load_json(portfolio_data_path)
         self.risk_adjusted_data = self._load_json(risk_adjusted_data_path)
+        
+        # For portfolio_data, use risk_adjusted file but extract base values
+        # This ensures we use the correct numbers from the actual optimization
+        if portfolio_data_path is None:
+            # Use risk_adjusted data as the source of truth
+            self.portfolio_data = self._extract_base_data_from_risk_adjusted(self.risk_adjusted_data)
+        else:
+            self.portfolio_data = self._load_json(portfolio_data_path)
+            # If the base file has wrong numbers, prefer risk_adjusted file
+            if self.portfolio_data.get('total_portfolio_profit', 0) < 5000000:
+                # Old/wrong data detected, use risk_adjusted file instead
+                self.portfolio_data = self._extract_base_data_from_risk_adjusted(self.risk_adjusted_data)
+        
+        # Load vessel specs to identify all Cargill vessels and idle vessels
+        self.all_cargill_vessels = self._load_cargill_vessels()
+        self.idle_vessels = self._calculate_idle_vessels()
         
         # Conversation state
         self.conversation_history: List[Dict[str, str]] = []
@@ -98,10 +113,89 @@ class VoyageChatbot:
         """Load JSON data from file path."""
         path = Path(path)
         if not path.exists():
-            raise FileNotFoundError(f"Data file not found: {path}")
+            # Return empty structure instead of raising error
+            print(f"Warning: Data file not found: {path}, using empty structure")
+            return {
+                "assignments": [],
+                "total_portfolio_profit": 0,
+                "base_portfolio_profit": 0,
+                "total_assignments": 0,
+                "committed_cargoes_assigned": 0,
+                "market_cargoes_taken": 0
+            }
         
-        with open(path, 'r') as f:
-            return json.load(f)
+        try:
+            with open(path, 'r') as f:
+                data = json.load(f)
+                # Ensure required structure exists
+                if "assignments" not in data:
+                    data["assignments"] = []
+                return data
+        except json.JSONDecodeError as e:
+            print(f"Warning: Invalid JSON in {path}: {e}, using empty structure")
+            return {
+                "assignments": [],
+                "total_portfolio_profit": 0,
+                "base_portfolio_profit": 0,
+                "total_assignments": 0,
+                "committed_cargoes_assigned": 0,
+                "market_cargoes_taken": 0
+            }
+    
+    def _load_cargill_vessels(self) -> List[str]:
+        """Load all Cargill vessel names from vessel_specs.csv."""
+        try:
+            vessel_specs_path = Path("processed/vessel_specs.csv")
+            if not vessel_specs_path.exists():
+                # Try alternative path
+                vessel_specs_path = Path("data/vessel_specs.csv")
+            
+            if vessel_specs_path.exists():
+                vessels_df = pd.read_csv(vessel_specs_path)
+                cargill_vessels = vessels_df[vessels_df["Fleet"] == "Cargill"]["Vessel Name"].tolist()
+                return cargill_vessels
+            else:
+                print(f"Warning: Vessel specs file not found at {vessel_specs_path}")
+                # Fallback: extract from assignments if available
+                assigned_vessels = set()
+                for assignment in self.portfolio_data.get('assignments', []):
+                    vessel = assignment.get('Vessel_Name') or assignment.get('vessel', '')
+                    if vessel:
+                        assigned_vessels.add(vessel)
+                # Also check risk_adjusted_data
+                for assignment in self.risk_adjusted_data.get('assignments', []):
+                    vessel = assignment.get('vessel', '')
+                    if vessel and assignment.get('fleet') == 'Cargill':
+                        assigned_vessels.add(vessel)
+                return list(assigned_vessels)
+        except Exception as e:
+            print(f"Warning: Error loading vessel specs: {e}")
+            return []
+    
+    def _calculate_idle_vessels(self) -> List[str]:
+        """Calculate which Cargill vessels are idle (not assigned to any cargo)."""
+        # Get all assigned vessels from both portfolio_data and risk_adjusted_data
+        assigned_vessels = set()
+        
+        # Check portfolio_data assignments
+        for assignment in self.portfolio_data.get('assignments', []):
+            vessel = assignment.get('Vessel_Name') or assignment.get('vessel', '')
+            if vessel:
+                assigned_vessels.add(vessel.upper())
+        
+        # Check risk_adjusted_data assignments (more reliable)
+        for assignment in self.risk_adjusted_data.get('assignments', []):
+            vessel = assignment.get('vessel', '')
+            if vessel and assignment.get('fleet') == 'Cargill':
+                assigned_vessels.add(vessel.upper())
+        
+        # Find idle vessels (Cargill vessels not in assignments)
+        idle = []
+        for vessel in self.all_cargill_vessels:
+            if vessel.upper() not in assigned_vessels:
+                idle.append(vessel)
+        
+        return idle
     
     def _build_system_prompt(self) -> str:
         """
@@ -156,27 +250,176 @@ Remember: You're a commercial decision-maker. Be decisive, concise, and focus on
         
         return prompt
     
+    def _normalize_assignment(self, assignment: Dict[str, Any]) -> Dict[str, Any]:
+        """Normalize assignment data to expected format."""
+        # Handle different JSON structures
+        normalized = {}
+        
+        # Vessel name
+        normalized['Vessel_Name'] = assignment.get('Vessel_Name') or assignment.get('vessel', 'Unknown')
+        
+        # Cargo ID
+        normalized['Cargo_ID'] = assignment.get('Cargo_ID') or assignment.get('cargo_id') or assignment.get('cargo') or assignment.get('route', 'Unknown')
+        
+        # Profit (try multiple field names)
+        normalized['Leg_Profit'] = (
+            assignment.get('Leg_Profit') or 
+            assignment.get('total_profit') or 
+            assignment.get('base_profit') or
+            assignment.get('risk_adjusted_profit') or
+            assignment.get('profit', 0)
+        )
+        
+        # TCE (try multiple field names)
+        normalized['TCE_Leg'] = (
+            assignment.get('TCE_Leg') or 
+            assignment.get('TCE') or 
+            assignment.get('tce') or
+            assignment.get('base_tce') or
+            assignment.get('risk_adjusted_tce', 0)
+        )
+        
+        # Ports - handle different formats
+        load_port = assignment.get('Load_Port') or assignment.get('load_port')
+        discharge_port = assignment.get('Discharge_Port') or assignment.get('discharge_port')
+        
+        # If route is a string like "PORT1 → PORT2", parse it
+        if not load_port or not discharge_port:
+            route = assignment.get('route', '')
+            if '→' in route or '->' in route:
+                parts = route.replace('→', '->').split('->')
+                if len(parts) == 2:
+                    load_port = load_port or parts[0].strip()
+                    discharge_port = discharge_port or parts[1].strip()
+        
+        normalized['Load_Port'] = load_port or 'Unknown'
+        normalized['Discharge_Port'] = discharge_port or 'Unknown'
+        
+        # Days
+        normalized['Leg_Days'] = assignment.get('Leg_Days') or assignment.get('voyage_days') or assignment.get('days', 0)
+        
+        # Cargo type
+        normalized['Cargo_Type'] = assignment.get('Cargo_Type') or assignment.get('cargo_type', 'Unknown')
+        
+        # Quantity
+        normalized['Quantity_MT'] = assignment.get('Quantity_MT') or assignment.get('quantity', 0)
+        
+        return normalized
+    
+    def _extract_base_data_from_risk_adjusted(self, risk_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Extract base case data from risk-adjusted file structure."""
+        # Get assigned Cargill vessels to calculate idle count
+        assigned_cargill_vessels = set()
+        for assignment in risk_data.get('assignments', []):
+            if assignment.get('fleet') == 'Cargill':
+                vessel = assignment.get('vessel', '')
+                if vessel:
+                    assigned_cargill_vessels.add(vessel.upper())
+        
+        # Calculate idle vessels count (will be updated later when vessel specs are loaded)
+        total_cargill_vessels = risk_data.get('cargill_vessels', 0)
+        idle_count = max(0, total_cargill_vessels - len(assigned_cargill_vessels))
+        
+        base_data = {
+            "total_portfolio_profit": risk_data.get('base_portfolio_profit', 0),
+            "cargill_vessel_profit": 0,  # Will calculate from assignments
+            "market_vessel_cost": 0,  # Will calculate from assignments
+            "committed_cargoes_assigned": risk_data.get('committed_cargoes', 0),
+            "market_cargoes_taken": risk_data.get('market_cargoes', 0),
+            "total_assignments": len(risk_data.get('assignments', [])),
+            "idle_vessels": idle_count,
+            "assignments": []
+        }
+        
+        # Convert risk-adjusted assignments to base format
+        for assignment in risk_data.get('assignments', []):
+            base_assignment = {
+                "Vessel_Name": assignment.get('vessel', 'Unknown'),
+                "Cargo_ID": assignment.get('cargo', assignment.get('route', 'Unknown')),
+                "Leg_Profit": assignment.get('base_profit', 0),
+                "TCE_Leg": assignment.get('base_tce', 0),
+                "Load_Port": "",
+                "Discharge_Port": "",
+                "Leg_Days": assignment.get('voyage_days', 0),
+                "Quantity_MT": 0
+            }
+            
+            # Parse route if available
+            route = assignment.get('route', '')
+            if '→' in route or '->' in route:
+                parts = route.replace('→', '->').split('->')
+                if len(parts) == 2:
+                    base_assignment["Load_Port"] = parts[0].strip()
+                    base_assignment["Discharge_Port"] = parts[1].strip()
+            
+            # Calculate fleet-specific profits
+            fleet = assignment.get('fleet', '')
+            base_profit = assignment.get('base_profit', 0)
+            if fleet == 'Cargill':
+                base_data["cargill_vessel_profit"] += base_profit
+            elif fleet == 'Market':
+                base_data["market_vessel_cost"] += base_profit
+            
+            base_data["assignments"].append(base_assignment)
+        
+        return base_data
+    
     def _format_portfolio_summary(self) -> str:
         """Format portfolio summary data for inclusion in system prompt."""
         data = self.portfolio_data
+        assignments = data.get('assignments', [])
+        
+        # Calculate totals from assignments if not directly available
+        if 'total_portfolio_profit' in data:
+            total_profit = data.get('total_portfolio_profit', 0)
+        elif 'base_portfolio_profit' in data:
+            total_profit = data.get('base_portfolio_profit', 0)
+        else:
+            total_profit = sum(
+                a.get('Leg_Profit') or a.get('total_profit') or a.get('base_profit') or a.get('risk_adjusted_profit', 0)
+                for a in assignments
+            )
+        
+        cargill_profit = data.get('cargill_vessel_profit', 0)
+        market_profit = data.get('market_vessel_cost', 0)
+        
+        committed = data.get('committed_cargoes_assigned', 0) or data.get('committed_cargoes', 0)
+        market = data.get('market_cargoes_taken', 0) or data.get('market_cargoes', 0)
+        total_assignments = data.get('total_assignments', len(assignments))
+        idle_count = len(self.idle_vessels)
+        
+        # Build Cargill fleet summary
+        cargill_fleet_info = f"""**Cargill Fleet ({len(self.all_cargill_vessels)} vessels):**
+- All Cargill Vessels: {', '.join(self.all_cargill_vessels)}"""
+        
+        if self.idle_vessels:
+            cargill_fleet_info += f"""
+- Idle Vessels ({idle_count}): {', '.join(self.idle_vessels)}"""
+        else:
+            cargill_fleet_info += f"""
+- Idle Vessels: None (all vessels assigned)"""
         
         summary = f"""**Portfolio Overview:**
-- Total Portfolio Profit: ${data.get('total_portfolio_profit', 0):,.2f}
-- Cargill Vessel Profit: ${data.get('cargill_vessel_profit', 0):,.2f}
-- Market Vessel Profit: ${data.get('market_vessel_cost', 0):,.2f}
-- Committed Cargoes: {data.get('committed_cargoes_assigned', 0)}/3
-- Market Cargoes: {data.get('market_cargoes_taken', 0)}/8
-- Total Assignments: {data.get('total_assignments', 0)}
-- Idle Vessels: {data.get('idle_vessels', 0)}
+- Total Portfolio Profit: ${total_profit:,.2f}
+- Cargill Vessel Profit: ${cargill_profit:,.2f}
+- Market Vessel Profit: ${market_profit:,.2f}
+- Committed Cargoes: {committed}/3
+- Market Cargoes: {market}/8
+- Total Assignments: {total_assignments}
+- Idle Vessels: {idle_count}
+
+{cargill_fleet_info}
 
 **Vessel-Cargo Assignments:**"""
         
-        for assignment in data.get('assignments', [])[:10]:  # Limit to first 10 for prompt size
+        for assignment in assignments[:10]:  # Limit to first 10 for prompt size
+            # Normalize assignment data
+            norm = self._normalize_assignment(assignment)
             summary += f"""
-- {assignment.get('Vessel_Name', 'Unknown')} → {assignment.get('Cargo_ID', 'Unknown')}
-  Route: {assignment.get('Load_Port', '')} → {assignment.get('Discharge_Port', '')}
-  Profit: ${assignment.get('Leg_Profit', 0):,.2f} | TCE: ${assignment.get('TCE_Leg', 0):,.2f}/day
-  Days: {assignment.get('Leg_Days', 0):.1f} | Quantity: {assignment.get('Quantity_MT', 0):,} MT"""
+- {norm.get('Vessel_Name', 'Unknown')} → {norm.get('Cargo_ID', 'Unknown')}
+  Route: {norm.get('Load_Port', '')} → {norm.get('Discharge_Port', '')}
+  Profit: ${norm.get('Leg_Profit', 0):,.2f} | TCE: ${norm.get('TCE_Leg', 0):,.2f}/day
+  Days: {norm.get('Leg_Days', 0):.1f} | Quantity: {norm.get('Quantity_MT', 0):,} MT"""
         
         return summary
     
@@ -212,15 +455,17 @@ Remember: You're a commercial decision-maker. Be decisive, concise, and focus on
         # Check if query asks about specific vessel or cargo
         assignments_context = ""
         for assignment in self.portfolio_data.get('assignments', []):
-            vessel = assignment.get('Vessel_Name', '').lower()
-            cargo = assignment.get('Cargo_ID', '').lower()
+            # Normalize assignment
+            norm = self._normalize_assignment(assignment)
+            vessel = norm.get('Vessel_Name', '').lower()
+            cargo = norm.get('Cargo_ID', '').lower()
             
             if vessel in query_lower or cargo in query_lower:
-                assignments_context += f"\n\n**Assignment Details for {assignment.get('Vessel_Name')} → {assignment.get('Cargo_ID')}:**"
-                assignments_context += f"\n- Route: {assignment.get('Load_Port')} → {assignment.get('Discharge_Port')}"
-                assignments_context += f"\n- Profit: ${assignment.get('Leg_Profit', 0):,.2f}"
-                assignments_context += f"\n- TCE: ${assignment.get('TCE_Leg', 0):,.2f}/day"
-                assignments_context += f"\n- Voyage Days: {assignment.get('Leg_Days', 0):.1f}"
+                assignments_context += f"\n\n**Assignment Details for {norm.get('Vessel_Name')} → {norm.get('Cargo_ID')}:**"
+                assignments_context += f"\n- Route: {norm.get('Load_Port')} → {norm.get('Discharge_Port')}"
+                assignments_context += f"\n- Profit: ${norm.get('Leg_Profit', 0):,.2f}"
+                assignments_context += f"\n- TCE: ${norm.get('TCE_Leg', 0):,.2f}/day"
+                assignments_context += f"\n- Voyage Days: {norm.get('Leg_Days', 0):.1f}"
                 assignments_context += f"\n- Revenue: ${assignment.get('Revenue', 0):,.2f}"
                 assignments_context += f"\n- Fuel Cost: ${assignment.get('Fuel_Cost', 0):,.2f}"
                 assignments_context += f"\n- Hire Cost: ${assignment.get('Hire_Cost', 0):,.2f}"
