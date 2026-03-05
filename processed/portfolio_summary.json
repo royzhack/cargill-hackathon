@@ -1,0 +1,61 @@
+{
+  "total_vessels": 15,
+  "cargill_vessels": 4,
+  "market_vessels": 11,
+  "total_cargoes": 11,
+  "committed_cargoes": 3,
+  "market_cargoes": 8,
+  "total_combinations": 165,
+  "assignments": [
+    {
+      "vessel": "OCEAN HORIZON",
+      "fleet": "Cargill",
+      "route": "West Africa \u2013 China",
+      "commodity": "Bauxite",
+      "load_port": "Kamsar_Guinea",
+      "discharge_port": "Qingdao_China",
+      "tce": 28949.0,
+      "total_profit": 902439.0,
+      "voyage_days": 68.4,
+      "freight_rate": 23.0
+    },
+    {
+      "vessel": "GOLDEN ASCENT",
+      "fleet": "Cargill",
+      "route": "Brazil \u2013 China",
+      "commodity": "Iron Ore",
+      "load_port": "Itagua\u00ed_Brazil",
+      "discharge_port": "Qingdao_China",
+      "tce": 20627.0,
+      "total_profit": 493317.0,
+      "voyage_days": 73.9,
+      "freight_rate": 22.3
+    },
+    {
+      "vessel": "ANN BELL",
+      "fleet": "Cargill",
+      "route": "Australia \u2013 China",
+      "commodity": "Iron Ore",
+      "load_port": "Port Hedland_Australia",
+      "discharge_port": "Lianyungang_China",
+      "tce": 10330.0,
+      "total_profit": -38796.0,
+      "voyage_days": 27.3,
+      "freight_rate": 9.0
+    },
+    {
+      "vessel": "PACIFIC GLORY",
+      "fleet": "Cargill",
+      "route": "West Africa \u2013 India (Bauxite)",
+      "commodity": "Bauxite",
+      "load_port": "Kamsar_Guinea",
+      "discharge_port": "Mangalore_India",
+      "tce": 16996.0,
+      "total_profit": 130553.0,
+      "voyage_days": 59.5,
+      "freight_rate": 15.51
+    }
+  ],
+  "total_portfolio_profit": 1487513.0,
+  "average_tce": 19226.0
+}

@@ -1,0 +1,406 @@
+Vessel,Current_Port,Destination_Port,Distance_NM,Ballast_Days_Warranted,Laden_Days_Warranted
+ANN BELL,Qingdao_China,Dampier_Australia,3331.2,9.57,10.28
+ANN BELL,Qingdao_China,Ponta da Madeira_Brazil,10768.94,30.95,33.24
+ANN BELL,Qingdao_China,Saldanha Bay_South Africa,8085.54,23.23,24.96
+ANN BELL,Qingdao_China,Taboneo_Indonesia,3109.59,8.94,9.6
+ANN BELL,Qingdao_China,Vancouver_Canada,5280.08,15.17,16.3
+ANN BELL,Qingdao_China,Kamsar_Guinea,11614.72,33.38,35.85
+ANN BELL,Qingdao_China,Port Hedland_Australia,3492.58,10.04,10.78
+ANN BELL,Qingdao_China,Tubarao_Brazil,10480.4,30.12,32.35
+ANN BELL,Qingdao_China,Caofeidian_China,278.65,0.8,0.86
+ANN BELL,Qingdao_China,Tianjin_China,304.26,0.87,0.94
+ANN BELL,Qingdao_China,Vizag_India,3156.62,9.07,9.74
+ANN BELL,Qingdao_China,Fangcheng_China,1501.69,4.32,4.63
+ANN BELL,Qingdao_China,Mangalore_India,3940.36,11.32,12.16
+ANN BELL,Qingdao_China,Gwangyang_South Korea,508.54,1.46,1.57
+ANN BELL,Qingdao_China,Teluk Rubiah_Malaysia,2692.8,7.74,8.31
+ANN BELL,Qingdao_China,Paradip_India,2806.81,8.07,8.66
+ANN BELL,Qingdao_China,Map Ta Phut_Thailand,2447.06,7.03,7.55
+ANN BELL,Qingdao_China,Rotterdam_Netherlands,6381.96,18.34,19.7
+ANN BELL,Qingdao_China,Xiamen_China,986.13,2.83,3.04
+ANN BELL,Qingdao_China,Kandla_India,3784.14,10.87,11.68
+ANN BELL,Qingdao_China,Port Talbot_Wales,6696.68,19.24,20.67
+ANN BELL,Qingdao_China,Mundra_India,3825.69,10.99,11.81
+ANN BELL,Qingdao_China,Jubail_Saudi Arabia,5014.2,14.41,15.48
+ANN BELL,Qingdao_China,Itaguaí_Brazil,11370.96,32.68,35.1
+ANN BELL,Qingdao_China,Jingtang_China,289.2,0.83,0.89
+ANN BELL,Qingdao_China,Lianyungang_China,130.17,0.37,0.4
+ANN BELL,Qingdao_China,Krishnapatnam_India,3532.96,10.15,10.9
+OCEAN HORIZON,Map Ta Phut_Thailand,Dampier_Australia,3081.34,8.67,9.3
+OCEAN HORIZON,Map Ta Phut_Thailand,Ponta da Madeira_Brazil,12124.91,34.14,36.61
+OCEAN HORIZON,Map Ta Phut_Thailand,Saldanha Bay_South Africa,7674.2,21.61,23.17
+OCEAN HORIZON,Map Ta Phut_Thailand,Taboneo_Indonesia,1369.64,3.86,4.14
+OCEAN HORIZON,Map Ta Phut_Thailand,Vancouver_Canada,8979.21,25.28,27.11
+OCEAN HORIZON,Map Ta Phut_Thailand,Kamsar_Guinea,9484.41,26.7,28.64
+OCEAN HORIZON,Map Ta Phut_Thailand,Port Hedland_Australia,3124.28,8.8,9.43
+OCEAN HORIZON,Map Ta Phut_Thailand,Tubarao_Brazil,11961.13,33.67,36.11
+OCEAN HORIZON,Map Ta Phut_Thailand,Qingdao_China,2447.06,6.89,7.39
+OCEAN HORIZON,Map Ta Phut_Thailand,Caofeidian_China,2563.49,7.22,7.74
+OCEAN HORIZON,Map Ta Phut_Thailand,Tianjin_China,2534.88,7.14,7.65
+OCEAN HORIZON,Map Ta Phut_Thailand,Vizag_India,1513.98,4.26,4.57
+OCEAN HORIZON,Map Ta Phut_Thailand,Fangcheng_China,948.11,2.67,2.86
+OCEAN HORIZON,Map Ta Phut_Thailand,Mangalore_India,2155.35,6.07,6.51
+OCEAN HORIZON,Map Ta Phut_Thailand,Gwangyang_South Korea,2750.35,7.74,8.3
+OCEAN HORIZON,Map Ta Phut_Thailand,Teluk Rubiah_Malaysia,714.78,2.01,2.16
+OCEAN HORIZON,Map Ta Phut_Thailand,Paradip_India,1329.57,3.74,4.01
+OCEAN HORIZON,Map Ta Phut_Thailand,Rotterdam_Netherlands,7087.84,19.95,21.4
+OCEAN HORIZON,Map Ta Phut_Thailand,Xiamen_China,1673.53,4.71,5.05
+OCEAN HORIZON,Map Ta Phut_Thailand,Kandla_India,2617.88,7.37,7.9
+OCEAN HORIZON,Map Ta Phut_Thailand,Port Talbot_Wales,7491.29,21.09,22.62
+OCEAN HORIZON,Map Ta Phut_Thailand,Mundra_India,2651.57,7.47,8.01
+OCEAN HORIZON,Map Ta Phut_Thailand,Jubail_Saudi Arabia,4216.46,11.87,12.73
+OCEAN HORIZON,Map Ta Phut_Thailand,Itaguaí_Brazil,12207.2,34.37,36.86
+OCEAN HORIZON,Map Ta Phut_Thailand,Jingtang_China,2582.34,7.27,7.8
+OCEAN HORIZON,Map Ta Phut_Thailand,Lianyungang_China,2318.6,6.53,7.0
+OCEAN HORIZON,Map Ta Phut_Thailand,Krishnapatnam_India,1724.27,4.85,5.21
+PACIFIC GLORY,Gwangyang_South Korea,Dampier_Australia,4753.32,13.95,14.67
+PACIFIC GLORY,Gwangyang_South Korea,Ponta da Madeira_Brazil,12335.95,36.2,38.07
+PACIFIC GLORY,Gwangyang_South Korea,Saldanha Bay_South Africa,10334.99,30.33,31.9
+PACIFIC GLORY,Gwangyang_South Korea,Taboneo_Indonesia,3114.12,9.14,9.61
+PACIFIC GLORY,Gwangyang_South Korea,Vancouver_Canada,4560.94,13.38,14.08
+PACIFIC GLORY,Gwangyang_South Korea,Kamsar_Guinea,10303.94,30.23,31.8
+PACIFIC GLORY,Gwangyang_South Korea,Port Hedland_Australia,3633.0,10.66,11.21
+PACIFIC GLORY,Gwangyang_South Korea,Tubarao_Brazil,13609.77,39.93,42.01
+PACIFIC GLORY,Gwangyang_South Korea,Qingdao_China,508.54,1.49,1.57
+PACIFIC GLORY,Gwangyang_South Korea,Caofeidian_China,707.72,2.08,2.18
+PACIFIC GLORY,Gwangyang_South Korea,Tianjin_China,752.03,2.21,2.32
+PACIFIC GLORY,Gwangyang_South Korea,Vizag_India,3611.62,10.6,11.15
+PACIFIC GLORY,Gwangyang_South Korea,Fangcheng_China,1809.86,5.31,5.59
+PACIFIC GLORY,Gwangyang_South Korea,Mangalore_India,4399.69,12.91,13.58
+PACIFIC GLORY,Gwangyang_South Korea,Teluk Rubiah_Malaysia,3333.09,9.78,10.29
+PACIFIC GLORY,Gwangyang_South Korea,Paradip_India,3263.79,9.58,10.07
+PACIFIC GLORY,Gwangyang_South Korea,Map Ta Phut_Thailand,2750.35,8.07,8.49
+PACIFIC GLORY,Gwangyang_South Korea,Rotterdam_Netherlands,6736.22,19.77,20.79
+PACIFIC GLORY,Gwangyang_South Korea,Xiamen_China,1119.15,3.28,3.45
+PACIFIC GLORY,Gwangyang_South Korea,Kandla_India,4283.55,12.57,13.22
+PACIFIC GLORY,Gwangyang_South Korea,Port Talbot_Wales,7028.8,20.62,21.69
+PACIFIC GLORY,Gwangyang_South Korea,Mundra_India,5278.26,15.49,16.29
+PACIFIC GLORY,Gwangyang_South Korea,Jubail_Saudi Arabia,5521.52,16.2,17.04
+PACIFIC GLORY,Gwangyang_South Korea,Itaguaí_Brazil,13947.02,40.92,43.05
+PACIFIC GLORY,Gwangyang_South Korea,Jingtang_China,706.79,2.07,2.18
+PACIFIC GLORY,Gwangyang_South Korea,Lianyungang_China,458.81,1.35,1.42
+PACIFIC GLORY,Gwangyang_South Korea,Krishnapatnam_India,3981.56,11.68,12.29
+GOLDEN ASCENT,Fangcheng_China,Dampier_Australia,2681.08,7.98,8.59
+GOLDEN ASCENT,Fangcheng_China,Ponta da Madeira_Brazil,10990.82,32.71,35.23
+GOLDEN ASCENT,Fangcheng_China,Saldanha Bay_South Africa,6681.36,19.88,21.41
+GOLDEN ASCENT,Fangcheng_China,Taboneo_Indonesia,1830.51,5.45,5.87
+GOLDEN ASCENT,Fangcheng_China,Vancouver_Canada,6011.32,17.89,19.27
+GOLDEN ASCENT,Fangcheng_China,Kamsar_Guinea,10129.0,30.15,32.46
+GOLDEN ASCENT,Fangcheng_China,Port Hedland_Australia,2842.74,8.46,9.11
+GOLDEN ASCENT,Fangcheng_China,Tubarao_Brazil,10191.84,30.33,32.67
+GOLDEN ASCENT,Fangcheng_China,Qingdao_China,1501.69,4.47,4.81
+GOLDEN ASCENT,Fangcheng_China,Caofeidian_China,1635.32,4.87,5.24
+GOLDEN ASCENT,Fangcheng_China,Tianjin_China,1611.01,4.79,5.16
+GOLDEN ASCENT,Fangcheng_China,Vizag_India,2014.3,5.99,6.46
+GOLDEN ASCENT,Fangcheng_China,Mangalore_India,2780.8,8.28,8.91
+GOLDEN ASCENT,Fangcheng_China,Gwangyang_South Korea,1809.86,5.39,5.8
+GOLDEN ASCENT,Fangcheng_China,Teluk Rubiah_Malaysia,1722.0,5.12,5.52
+GOLDEN ASCENT,Fangcheng_China,Paradip_India,1704.09,5.07,5.46
+GOLDEN ASCENT,Fangcheng_China,Map Ta Phut_Thailand,948.11,2.82,3.04
+GOLDEN ASCENT,Fangcheng_China,Rotterdam_Netherlands,6845.91,20.37,21.94
+GOLDEN ASCENT,Fangcheng_China,Xiamen_China,789.98,2.35,2.53
+GOLDEN ASCENT,Fangcheng_China,Kandla_India,2960.94,8.81,9.49
+GOLDEN ASCENT,Fangcheng_China,Port Talbot_Wales,7225.35,21.5,23.16
+GOLDEN ASCENT,Fangcheng_China,Mundra_India,4160.19,12.38,13.33
+GOLDEN ASCENT,Fangcheng_China,Jubail_Saudi Arabia,5177.52,15.41,16.59
+GOLDEN ASCENT,Fangcheng_China,Itaguaí_Brazil,10310.16,30.68,33.05
+GOLDEN ASCENT,Fangcheng_China,Jingtang_China,1654.25,4.92,5.3
+GOLDEN ASCENT,Fangcheng_China,Lianyungang_China,1372.53,4.08,4.4
+GOLDEN ASCENT,Fangcheng_China,Krishnapatnam_India,2337.75,6.96,7.49
+ATLANTIC FORTUNE,Paradip_India,Dampier_Australia,4235.0,12.09,12.79
+ATLANTIC FORTUNE,Paradip_India,Ponta da Madeira_Brazil,10839.16,30.93,32.73
+ATLANTIC FORTUNE,Paradip_India,Saldanha Bay_South Africa,7100.58,20.26,21.44
+ATLANTIC FORTUNE,Paradip_India,Taboneo_Indonesia,2424.45,6.92,7.32
+ATLANTIC FORTUNE,Paradip_India,Vancouver_Canada,9045.75,25.82,27.31
+ATLANTIC FORTUNE,Paradip_India,Kamsar_Guinea,8187.4,23.37,24.72
+ATLANTIC FORTUNE,Paradip_India,Port Hedland_Australia,2980.8,8.51,9.0
+ATLANTIC FORTUNE,Paradip_India,Tubarao_Brazil,10965.74,31.29,33.11
+ATLANTIC FORTUNE,Paradip_India,Qingdao_China,2806.81,8.01,8.47
+ATLANTIC FORTUNE,Paradip_India,Caofeidian_China,2781.98,7.94,8.4
+ATLANTIC FORTUNE,Paradip_India,Tianjin_China,4542.3,12.96,13.71
+ATLANTIC FORTUNE,Paradip_India,Vizag_India,248.46,0.71,0.75
+ATLANTIC FORTUNE,Paradip_India,Fangcheng_China,1704.09,4.86,5.15
+ATLANTIC FORTUNE,Paradip_India,Mangalore_India,1135.91,3.24,3.43
+ATLANTIC FORTUNE,Paradip_India,Gwangyang_South Korea,3263.79,9.31,9.85
+ATLANTIC FORTUNE,Paradip_India,Teluk Rubiah_Malaysia,1769.87,5.05,5.34
+ATLANTIC FORTUNE,Paradip_India,Map Ta Phut_Thailand,1329.57,3.79,4.01
+ATLANTIC FORTUNE,Paradip_India,Rotterdam_Netherlands,5854.16,16.71,17.68
+ATLANTIC FORTUNE,Paradip_India,Xiamen_China,2460.05,7.02,7.43
+ATLANTIC FORTUNE,Paradip_India,Kandla_India,2332.74,6.66,7.04
+ATLANTIC FORTUNE,Paradip_India,Port Talbot_Wales,6264.74,17.88,18.92
+ATLANTIC FORTUNE,Paradip_India,Mundra_India,1343.32,3.83,4.06
+ATLANTIC FORTUNE,Paradip_India,Jubail_Saudi Arabia,2896.44,8.27,8.75
+ATLANTIC FORTUNE,Paradip_India,Itaguaí_Brazil,8399.58,23.97,25.36
+ATLANTIC FORTUNE,Paradip_India,Jingtang_China,4434.56,12.66,13.39
+ATLANTIC FORTUNE,Paradip_India,Lianyungang_China,4003.0,11.42,12.09
+ATLANTIC FORTUNE,Paradip_India,Krishnapatnam_India,544.68,1.55,1.64
+PACIFIC VANGUARD,Caofeidian_China,Dampier_Australia,3725.37,10.85,11.41
+PACIFIC VANGUARD,Caofeidian_China,Ponta da Madeira_Brazil,11049.5,32.2,33.85
+PACIFIC VANGUARD,Caofeidian_China,Saldanha Bay_South Africa,8469.69,24.68,25.95
+PACIFIC VANGUARD,Caofeidian_China,Taboneo_Indonesia,3081.52,8.98,9.44
+PACIFIC VANGUARD,Caofeidian_China,Vancouver_Canada,5355.0,15.6,16.41
+PACIFIC VANGUARD,Caofeidian_China,Kamsar_Guinea,11120.08,32.4,34.07
+PACIFIC VANGUARD,Caofeidian_China,Port Hedland_Australia,3788.51,11.04,11.61
+PACIFIC VANGUARD,Caofeidian_China,Tubarao_Brazil,11214.72,32.68,34.36
+PACIFIC VANGUARD,Caofeidian_China,Qingdao_China,278.65,0.81,0.85
+PACIFIC VANGUARD,Caofeidian_China,Tianjin_China,49.44,0.14,0.15
+PACIFIC VANGUARD,Caofeidian_China,Vizag_India,3131.34,9.12,9.59
+PACIFIC VANGUARD,Caofeidian_China,Fangcheng_China,1635.32,4.76,5.01
+PACIFIC VANGUARD,Caofeidian_China,Mangalore_India,3904.26,11.38,11.96
+PACIFIC VANGUARD,Caofeidian_China,Gwangyang_South Korea,707.72,2.06,2.17
+PACIFIC VANGUARD,Caofeidian_China,Teluk Rubiah_Malaysia,3106.48,9.05,9.52
+PACIFIC VANGUARD,Caofeidian_China,Paradip_India,2781.98,8.11,8.52
+PACIFIC VANGUARD,Caofeidian_China,Map Ta Phut_Thailand,2563.49,7.47,7.85
+PACIFIC VANGUARD,Caofeidian_China,Rotterdam_Netherlands,6106.14,17.79,18.71
+PACIFIC VANGUARD,Caofeidian_China,Xiamen_China,1220.12,3.56,3.74
+PACIFIC VANGUARD,Caofeidian_China,Kandla_India,5591.36,16.29,17.13
+PACIFIC VANGUARD,Caofeidian_China,Port Talbot_Wales,6419.04,18.7,19.67
+PACIFIC VANGUARD,Caofeidian_China,Mundra_India,3718.17,10.83,11.39
+PACIFIC VANGUARD,Caofeidian_China,Jubail_Saudi Arabia,4839.34,14.1,14.83
+PACIFIC VANGUARD,Caofeidian_China,Itaguaí_Brazil,11328.57,33.01,34.71
+PACIFIC VANGUARD,Caofeidian_China,Jingtang_China,18.92,0.06,0.06
+PACIFIC VANGUARD,Caofeidian_China,Lianyungang_China,363.4,1.06,1.11
+PACIFIC VANGUARD,Caofeidian_China,Krishnapatnam_India,3512.96,10.24,10.76
+CORAL EMPEROR,Rotterdam_Netherlands,Dampier_Australia,10082.53,29.79,31.35
+CORAL EMPEROR,Rotterdam_Netherlands,Ponta da Madeira_Brazil,4080.78,12.06,12.69
+CORAL EMPEROR,Rotterdam_Netherlands,Saldanha Bay_South Africa,6324.2,18.69,19.66
+CORAL EMPEROR,Rotterdam_Netherlands,Taboneo_Indonesia,9119.0,26.95,28.36
+CORAL EMPEROR,Rotterdam_Netherlands,Vancouver_Canada,8711.22,25.74,27.09
+CORAL EMPEROR,Rotterdam_Netherlands,Kamsar_Guinea,3718.64,10.99,11.56
+CORAL EMPEROR,Rotterdam_Netherlands,Port Hedland_Australia,10158.86,30.02,31.59
+CORAL EMPEROR,Rotterdam_Netherlands,Tubarao_Brazil,5161.33,15.25,16.05
+CORAL EMPEROR,Rotterdam_Netherlands,Qingdao_China,6381.96,18.86,19.84
+CORAL EMPEROR,Rotterdam_Netherlands,Caofeidian_China,6106.14,18.04,18.99
+CORAL EMPEROR,Rotterdam_Netherlands,Tianjin_China,11133.0,32.9,34.62
+CORAL EMPEROR,Rotterdam_Netherlands,Vizag_India,5840.39,17.26,18.16
+CORAL EMPEROR,Rotterdam_Netherlands,Fangcheng_China,6845.91,20.23,21.29
+CORAL EMPEROR,Rotterdam_Netherlands,Mangalore_India,6434.01,19.01,20.01
+CORAL EMPEROR,Rotterdam_Netherlands,Gwangyang_South Korea,6736.22,19.91,20.95
+CORAL EMPEROR,Rotterdam_Netherlands,Teluk Rubiah_Malaysia,7623.66,22.53,23.71
+CORAL EMPEROR,Rotterdam_Netherlands,Paradip_India,5854.16,17.3,18.2
+CORAL EMPEROR,Rotterdam_Netherlands,Map Ta Phut_Thailand,7087.84,20.95,22.04
+CORAL EMPEROR,Rotterdam_Netherlands,Xiamen_China,7088.02,20.95,22.04
+CORAL EMPEROR,Rotterdam_Netherlands,Kandla_India,6143.98,18.16,19.1
+CORAL EMPEROR,Rotterdam_Netherlands,Port Talbot_Wales,535.8,1.58,1.67
+CORAL EMPEROR,Rotterdam_Netherlands,Mundra_India,4815.01,14.23,14.97
+CORAL EMPEROR,Rotterdam_Netherlands,Jubail_Saudi Arabia,3534.82,10.45,10.99
+CORAL EMPEROR,Rotterdam_Netherlands,Itaguaí_Brazil,5383.3,15.91,16.74
+CORAL EMPEROR,Rotterdam_Netherlands,Jingtang_China,6098.45,18.02,18.96
+CORAL EMPEROR,Rotterdam_Netherlands,Lianyungang_China,6433.19,19.01,20.0
+CORAL EMPEROR,Rotterdam_Netherlands,Krishnapatnam_India,5902.08,17.44,18.35
+EVEREST OCEAN,Xiamen_China,Dampier_Australia,2820.14,8.1,8.58
+EVEREST OCEAN,Xiamen_China,Ponta da Madeira_Brazil,12789.78,36.75,38.9
+EVEREST OCEAN,Xiamen_China,Saldanha Bay_South Africa,9340.12,26.84,28.41
+EVEREST OCEAN,Xiamen_China,Taboneo_Indonesia,1975.74,5.68,6.01
+EVEREST OCEAN,Xiamen_China,Vancouver_Canada,5263.68,15.13,16.01
+EVEREST OCEAN,Xiamen_China,Kamsar_Guinea,10304.48,29.61,31.34
+EVEREST OCEAN,Xiamen_China,Port Hedland_Australia,2806.75,8.07,8.54
+EVEREST OCEAN,Xiamen_China,Tubarao_Brazil,10765.65,30.94,32.74
+EVEREST OCEAN,Xiamen_China,Qingdao_China,986.13,2.83,3.0
+EVEREST OCEAN,Xiamen_China,Caofeidian_China,1220.12,3.51,3.71
+EVEREST OCEAN,Xiamen_China,Tianjin_China,1219.14,3.5,3.71
+EVEREST OCEAN,Xiamen_China,Vizag_India,2784.31,8.0,8.47
+EVEREST OCEAN,Xiamen_China,Fangcheng_China,789.98,2.27,2.4
+EVEREST OCEAN,Xiamen_China,Mangalore_India,3560.49,10.23,10.83
+EVEREST OCEAN,Xiamen_China,Gwangyang_South Korea,1119.15,3.22,3.4
+EVEREST OCEAN,Xiamen_China,Teluk Rubiah_Malaysia,2218.09,6.37,6.75
+EVEREST OCEAN,Xiamen_China,Paradip_India,2460.05,7.07,7.48
+EVEREST OCEAN,Xiamen_China,Map Ta Phut_Thailand,1673.53,4.81,5.09
+EVEREST OCEAN,Xiamen_China,Rotterdam_Netherlands,7088.02,20.37,21.56
+EVEREST OCEAN,Xiamen_China,Kandla_India,3665.53,10.53,11.15
+EVEREST OCEAN,Xiamen_China,Port Talbot_Wales,7437.12,21.37,22.62
+EVEREST OCEAN,Xiamen_China,Mundra_India,3706.63,10.65,11.27
+EVEREST OCEAN,Xiamen_China,Jubail_Saudi Arabia,5117.84,14.71,15.57
+EVEREST OCEAN,Xiamen_China,Itaguaí_Brazil,10369.0,29.8,31.54
+EVEREST OCEAN,Xiamen_China,Jingtang_China,1236.78,3.55,3.76
+EVEREST OCEAN,Xiamen_China,Lianyungang_China,866.7,2.49,2.64
+EVEREST OCEAN,Xiamen_China,Krishnapatnam_India,3119.58,8.96,9.49
+POLARIS SPIRIT,Kandla_India,Dampier_Australia,5291.03,15.0,15.86
+POLARIS SPIRIT,Kandla_India,Ponta da Madeira_Brazil,9532.44,27.02,28.57
+POLARIS SPIRIT,Kandla_India,Saldanha Bay_South Africa,4622.05,13.1,13.86
+POLARIS SPIRIT,Kandla_India,Taboneo_Indonesia,3670.92,10.41,11.0
+POLARIS SPIRIT,Kandla_India,Vancouver_Canada,9772.29,27.7,29.29
+POLARIS SPIRIT,Kandla_India,Kamsar_Guinea,6880.84,19.5,20.63
+POLARIS SPIRIT,Kandla_India,Port Hedland_Australia,5385.93,15.27,16.14
+POLARIS SPIRIT,Kandla_India,Tubarao_Brazil,9745.46,27.62,29.21
+POLARIS SPIRIT,Kandla_India,Qingdao_China,3784.14,10.73,11.34
+POLARIS SPIRIT,Kandla_India,Caofeidian_China,5591.36,15.85,16.76
+POLARIS SPIRIT,Kandla_India,Tianjin_China,3627.91,10.28,10.88
+POLARIS SPIRIT,Kandla_India,Vizag_India,1118.35,3.17,3.35
+POLARIS SPIRIT,Kandla_India,Fangcheng_China,2960.94,8.39,8.88
+POLARIS SPIRIT,Kandla_India,Mangalore_India,927.22,2.63,2.78
+POLARIS SPIRIT,Kandla_India,Gwangyang_South Korea,4283.55,12.14,12.84
+POLARIS SPIRIT,Kandla_India,Teluk Rubiah_Malaysia,2933.8,8.32,8.79
+POLARIS SPIRIT,Kandla_India,Paradip_India,2332.74,6.61,6.99
+POLARIS SPIRIT,Kandla_India,Map Ta Phut_Thailand,2617.88,7.42,7.85
+POLARIS SPIRIT,Kandla_India,Rotterdam_Netherlands,6143.98,17.41,18.42
+POLARIS SPIRIT,Kandla_India,Xiamen_China,3665.53,10.39,10.99
+POLARIS SPIRIT,Kandla_India,Port Talbot_Wales,5240.69,14.85,15.71
+POLARIS SPIRIT,Kandla_India,Mundra_India,41.79,0.12,0.13
+POLARIS SPIRIT,Kandla_India,Jubail_Saudi Arabia,1599.42,4.53,4.79
+POLARIS SPIRIT,Kandla_India,Itaguaí_Brazil,10075.42,28.56,30.2
+POLARIS SPIRIT,Kandla_India,Jingtang_China,3688.43,10.45,11.06
+POLARIS SPIRIT,Kandla_India,Lianyungang_China,3711.16,10.52,11.12
+POLARIS SPIRIT,Kandla_India,Krishnapatnam_India,1079.62,3.06,3.24
+IRON CENTURY,Port Talbot_Wales,Dampier_Australia,10494.78,30.79,32.39
+IRON CENTURY,Port Talbot_Wales,Ponta da Madeira_Brazil,3731.59,10.95,11.52
+IRON CENTURY,Port Talbot_Wales,Saldanha Bay_South Africa,5582.2,16.38,17.23
+IRON CENTURY,Port Talbot_Wales,Taboneo_Indonesia,9185.53,26.95,28.35
+IRON CENTURY,Port Talbot_Wales,Vancouver_Canada,5606.8,16.45,17.3
+IRON CENTURY,Port Talbot_Wales,Kamsar_Guinea,3533.18,10.37,10.9
+IRON CENTURY,Port Talbot_Wales,Port Hedland_Australia,10570.05,31.02,32.62
+IRON CENTURY,Port Talbot_Wales,Tubarao_Brazil,4836.84,14.19,14.93
+IRON CENTURY,Port Talbot_Wales,Qingdao_China,6696.68,19.65,20.67
+IRON CENTURY,Port Talbot_Wales,Caofeidian_China,6419.04,18.84,19.81
+IRON CENTURY,Port Talbot_Wales,Tianjin_China,6392.99,18.76,19.73
+IRON CENTURY,Port Talbot_Wales,Vizag_India,6253.19,18.35,19.3
+IRON CENTURY,Port Talbot_Wales,Fangcheng_China,7225.35,21.2,22.3
+IRON CENTURY,Port Talbot_Wales,Mangalore_India,6125.81,17.97,18.91
+IRON CENTURY,Port Talbot_Wales,Gwangyang_South Korea,7028.8,20.62,21.69
+IRON CENTURY,Port Talbot_Wales,Teluk Rubiah_Malaysia,8033.8,23.57,24.8
+IRON CENTURY,Port Talbot_Wales,Paradip_India,6264.74,18.38,19.34
+IRON CENTURY,Port Talbot_Wales,Map Ta Phut_Thailand,7491.29,21.98,23.12
+IRON CENTURY,Port Talbot_Wales,Rotterdam_Netherlands,535.8,1.57,1.65
+IRON CENTURY,Port Talbot_Wales,Xiamen_China,7437.12,21.82,22.95
+IRON CENTURY,Port Talbot_Wales,Kandla_India,5240.69,15.38,16.17
+IRON CENTURY,Port Talbot_Wales,Mundra_India,5226.51,15.34,16.13
+IRON CENTURY,Port Talbot_Wales,Jubail_Saudi Arabia,3926.56,11.52,12.12
+IRON CENTURY,Port Talbot_Wales,Itaguaí_Brazil,5010.39,14.7,15.46
+IRON CENTURY,Port Talbot_Wales,Jingtang_China,6410.36,18.81,19.79
+IRON CENTURY,Port Talbot_Wales,Lianyungang_China,6754.52,19.82,20.85
+IRON CENTURY,Port Talbot_Wales,Krishnapatnam_India,6314.58,18.53,19.49
+MOUNTAIN TRADER,Gwangyang_South Korea,Dampier_Australia,4753.32,14.15,14.89
+MOUNTAIN TRADER,Gwangyang_South Korea,Ponta da Madeira_Brazil,12335.95,36.71,38.65
+MOUNTAIN TRADER,Gwangyang_South Korea,Saldanha Bay_South Africa,10334.99,30.76,32.38
+MOUNTAIN TRADER,Gwangyang_South Korea,Taboneo_Indonesia,3114.12,9.27,9.76
+MOUNTAIN TRADER,Gwangyang_South Korea,Vancouver_Canada,4560.94,13.57,14.29
+MOUNTAIN TRADER,Gwangyang_South Korea,Kamsar_Guinea,10303.94,30.67,32.28
+MOUNTAIN TRADER,Gwangyang_South Korea,Port Hedland_Australia,3633.0,10.81,11.38
+MOUNTAIN TRADER,Gwangyang_South Korea,Tubarao_Brazil,13609.77,40.51,42.64
+MOUNTAIN TRADER,Gwangyang_South Korea,Qingdao_China,508.54,1.51,1.59
+MOUNTAIN TRADER,Gwangyang_South Korea,Caofeidian_China,707.72,2.11,2.22
+MOUNTAIN TRADER,Gwangyang_South Korea,Tianjin_China,752.03,2.24,2.36
+MOUNTAIN TRADER,Gwangyang_South Korea,Vizag_India,3611.62,10.75,11.31
+MOUNTAIN TRADER,Gwangyang_South Korea,Fangcheng_China,1809.86,5.39,5.67
+MOUNTAIN TRADER,Gwangyang_South Korea,Mangalore_India,4399.69,13.09,13.78
+MOUNTAIN TRADER,Gwangyang_South Korea,Teluk Rubiah_Malaysia,3333.09,9.92,10.44
+MOUNTAIN TRADER,Gwangyang_South Korea,Paradip_India,3263.79,9.71,10.22
+MOUNTAIN TRADER,Gwangyang_South Korea,Map Ta Phut_Thailand,2750.35,8.19,8.62
+MOUNTAIN TRADER,Gwangyang_South Korea,Rotterdam_Netherlands,6736.22,20.05,21.1
+MOUNTAIN TRADER,Gwangyang_South Korea,Xiamen_China,1119.15,3.33,3.51
+MOUNTAIN TRADER,Gwangyang_South Korea,Kandla_India,4283.55,12.75,13.42
+MOUNTAIN TRADER,Gwangyang_South Korea,Port Talbot_Wales,7028.8,20.92,22.02
+MOUNTAIN TRADER,Gwangyang_South Korea,Mundra_India,5278.26,15.71,16.54
+MOUNTAIN TRADER,Gwangyang_South Korea,Jubail_Saudi Arabia,5521.52,16.43,17.3
+MOUNTAIN TRADER,Gwangyang_South Korea,Itaguaí_Brazil,13947.02,41.51,43.69
+MOUNTAIN TRADER,Gwangyang_South Korea,Jingtang_China,706.79,2.1,2.21
+MOUNTAIN TRADER,Gwangyang_South Korea,Lianyungang_China,458.81,1.37,1.44
+MOUNTAIN TRADER,Gwangyang_South Korea,Krishnapatnam_India,3981.56,11.85,12.47
+NAVIS PRIDE,Mundra_India,Dampier_Australia,5310.2,15.26,16.03
+NAVIS PRIDE,Mundra_India,Ponta da Madeira_Brazil,9496.22,27.29,28.67
+NAVIS PRIDE,Mundra_India,Saldanha Bay_South Africa,6264.92,18.0,18.92
+NAVIS PRIDE,Mundra_India,Taboneo_Indonesia,3596.52,10.33,10.86
+NAVIS PRIDE,Mundra_India,Vancouver_Canada,10028.64,28.82,30.28
+NAVIS PRIDE,Mundra_India,Kamsar_Guinea,6844.87,19.67,20.67
+NAVIS PRIDE,Mundra_India,Port Hedland_Australia,5406.14,15.53,16.32
+NAVIS PRIDE,Mundra_India,Tubarao_Brazil,9704.32,27.89,29.3
+NAVIS PRIDE,Mundra_India,Qingdao_China,3825.69,10.99,11.55
+NAVIS PRIDE,Mundra_India,Caofeidian_China,3718.17,10.68,11.23
+NAVIS PRIDE,Mundra_India,Tianjin_China,3668.99,10.54,11.08
+NAVIS PRIDE,Mundra_India,Vizag_India,1148.95,3.3,3.47
+NAVIS PRIDE,Mundra_India,Fangcheng_China,4160.19,11.95,12.56
+NAVIS PRIDE,Mundra_India,Mangalore_India,929.52,2.67,2.81
+NAVIS PRIDE,Mundra_India,Gwangyang_South Korea,5278.26,15.17,15.94
+NAVIS PRIDE,Mundra_India,Teluk Rubiah_Malaysia,2960.51,8.51,8.94
+NAVIS PRIDE,Mundra_India,Paradip_India,1343.32,3.86,4.06
+NAVIS PRIDE,Mundra_India,Map Ta Phut_Thailand,2651.57,7.62,8.01
+NAVIS PRIDE,Mundra_India,Rotterdam_Netherlands,4815.01,13.84,14.54
+NAVIS PRIDE,Mundra_India,Xiamen_China,3706.63,10.65,11.19
+NAVIS PRIDE,Mundra_India,Kandla_India,41.79,0.12,0.13
+NAVIS PRIDE,Mundra_India,Port Talbot_Wales,5226.51,15.02,15.78
+NAVIS PRIDE,Mundra_India,Jubail_Saudi Arabia,1567.06,4.5,4.73
+NAVIS PRIDE,Mundra_India,Itaguaí_Brazil,10034.07,28.83,30.3
+NAVIS PRIDE,Mundra_India,Jingtang_China,3729.48,10.72,11.26
+NAVIS PRIDE,Mundra_India,Lianyungang_China,3752.83,10.78,11.33
+NAVIS PRIDE,Mundra_India,Krishnapatnam_India,1098.68,3.16,3.32
+AURORA SKY,Jingtang_China,Dampier_Australia,3708.54,10.96,11.53
+AURORA SKY,Jingtang_China,Ponta da Madeira_Brazil,11483.16,33.93,35.71
+AURORA SKY,Jingtang_China,Saldanha Bay_South Africa,8123.94,24.01,25.26
+AURORA SKY,Jingtang_China,Taboneo_Indonesia,3365.32,9.94,10.46
+AURORA SKY,Jingtang_China,Vancouver_Canada,5337.66,15.77,16.6
+AURORA SKY,Jingtang_China,Kamsar_Guinea,12019.35,35.52,37.37
+AURORA SKY,Jingtang_China,Port Hedland_Australia,3584.64,10.59,11.15
+AURORA SKY,Jingtang_China,Tubarao_Brazil,11650.33,34.43,36.23
+AURORA SKY,Jingtang_China,Qingdao_China,289.2,0.85,0.9
+AURORA SKY,Jingtang_China,Caofeidian_China,18.92,0.06,0.06
+AURORA SKY,Jingtang_China,Tianjin_China,82.82,0.24,0.26
+AURORA SKY,Jingtang_China,Vizag_India,3146.8,9.3,9.78
+AURORA SKY,Jingtang_China,Fangcheng_China,1654.25,4.89,5.14
+AURORA SKY,Jingtang_China,Mangalore_India,3919.16,11.58,12.19
+AURORA SKY,Jingtang_China,Gwangyang_South Korea,706.79,2.09,2.2
+AURORA SKY,Jingtang_China,Teluk Rubiah_Malaysia,3118.96,9.22,9.7
+AURORA SKY,Jingtang_China,Paradip_India,4434.56,13.1,13.79
+AURORA SKY,Jingtang_China,Map Ta Phut_Thailand,2582.34,7.63,8.03
+AURORA SKY,Jingtang_China,Rotterdam_Netherlands,6098.45,18.02,18.96
+AURORA SKY,Jingtang_China,Xiamen_China,1236.78,3.65,3.85
+AURORA SKY,Jingtang_China,Kandla_India,3688.43,10.9,11.47
+AURORA SKY,Jingtang_China,Port Talbot_Wales,6410.36,18.94,19.93
+AURORA SKY,Jingtang_China,Mundra_India,3729.48,11.02,11.6
+AURORA SKY,Jingtang_China,Jubail_Saudi Arabia,4845.73,14.32,15.07
+AURORA SKY,Jingtang_China,Itaguaí_Brazil,11083.22,32.75,34.46
+AURORA SKY,Jingtang_China,Lianyungang_China,378.12,1.12,1.18
+AURORA SKY,Jingtang_China,Krishnapatnam_India,3528.56,10.43,10.97
+ZENITH GLORY,Vizag_India,Dampier_Australia,4243.92,12.11,12.72
+ZENITH GLORY,Vizag_India,Ponta da Madeira_Brazil,10614.97,30.29,31.82
+ZENITH GLORY,Vizag_India,Saldanha Bay_South Africa,6750.55,19.27,20.24
+ZENITH GLORY,Vizag_India,Taboneo_Indonesia,2372.52,6.77,7.11
+ZENITH GLORY,Vizag_India,Vancouver_Canada,8810.76,25.14,26.41
+ZENITH GLORY,Vizag_India,Kamsar_Guinea,8455.2,24.13,25.35
+ZENITH GLORY,Vizag_India,Port Hedland_Australia,4327.04,12.35,12.97
+ZENITH GLORY,Vizag_India,Tubarao_Brazil,10654.01,30.41,31.94
+ZENITH GLORY,Vizag_India,Qingdao_China,3156.62,9.01,9.46
+ZENITH GLORY,Vizag_India,Caofeidian_China,3131.34,8.94,9.39
+ZENITH GLORY,Vizag_India,Tianjin_China,4129.65,11.79,12.38
+ZENITH GLORY,Vizag_India,Fangcheng_China,2014.3,5.75,6.04
+ZENITH GLORY,Vizag_India,Mangalore_India,789.08,2.25,2.37
+ZENITH GLORY,Vizag_India,Gwangyang_South Korea,3611.62,10.31,10.83
+ZENITH GLORY,Vizag_India,Teluk Rubiah_Malaysia,1827.88,5.22,5.48
+ZENITH GLORY,Vizag_India,Paradip_India,248.46,0.71,0.74
+ZENITH GLORY,Vizag_India,Map Ta Phut_Thailand,1513.98,4.32,4.54
+ZENITH GLORY,Vizag_India,Rotterdam_Netherlands,5840.39,16.67,17.51
+ZENITH GLORY,Vizag_India,Xiamen_China,2784.31,7.95,8.35
+ZENITH GLORY,Vizag_India,Kandla_India,1118.35,3.19,3.35
+ZENITH GLORY,Vizag_India,Port Talbot_Wales,6253.19,17.85,18.74
+ZENITH GLORY,Vizag_India,Mundra_India,1148.95,3.28,3.44
+ZENITH GLORY,Vizag_India,Jubail_Saudi Arabia,2893.44,8.26,8.67
+ZENITH GLORY,Vizag_India,Itaguaí_Brazil,10956.11,31.27,32.84
+ZENITH GLORY,Vizag_India,Jingtang_China,3146.8,8.98,9.43
+ZENITH GLORY,Vizag_India,Lianyungang_China,4064.24,11.6,12.18
+ZENITH GLORY,Vizag_India,Krishnapatnam_India,383.83,1.1,1.15
+TITAN LEGACY,Jubail_Saudi Arabia,Dampier_Australia,6767.98,19.86,20.89
+TITAN LEGACY,Jubail_Saudi Arabia,Ponta da Madeira_Brazil,7950.04,23.33,24.54
+TITAN LEGACY,Jubail_Saudi Arabia,Saldanha Bay_South Africa,5002.9,14.68,15.44
+TITAN LEGACY,Jubail_Saudi Arabia,Taboneo_Indonesia,5920.49,17.37,18.27
+TITAN LEGACY,Jubail_Saudi Arabia,Vancouver_Canada,8692.22,25.51,26.83
+TITAN LEGACY,Jubail_Saudi Arabia,Kamsar_Guinea,5299.3,15.55,16.36
+TITAN LEGACY,Jubail_Saudi Arabia,Port Hedland_Australia,6877.94,20.18,21.23
+TITAN LEGACY,Jubail_Saudi Arabia,Tubarao_Brazil,8049.72,23.62,24.84
+TITAN LEGACY,Jubail_Saudi Arabia,Qingdao_China,5014.2,14.71,15.48
+TITAN LEGACY,Jubail_Saudi Arabia,Caofeidian_China,4839.34,14.2,14.94
+TITAN LEGACY,Jubail_Saudi Arabia,Tianjin_China,4790.83,14.06,14.79
+TITAN LEGACY,Jubail_Saudi Arabia,Vizag_India,2893.44,8.49,8.93
+TITAN LEGACY,Jubail_Saudi Arabia,Fangcheng_China,5177.52,15.19,15.98
+TITAN LEGACY,Jubail_Saudi Arabia,Mangalore_India,2309.23,6.78,7.13
+TITAN LEGACY,Jubail_Saudi Arabia,Gwangyang_South Korea,5521.52,16.2,17.04
+TITAN LEGACY,Jubail_Saudi Arabia,Teluk Rubiah_Malaysia,4509.85,13.23,13.92
+TITAN LEGACY,Jubail_Saudi Arabia,Paradip_India,2896.44,8.5,8.94
+TITAN LEGACY,Jubail_Saudi Arabia,Map Ta Phut_Thailand,4216.46,12.37,13.01
+TITAN LEGACY,Jubail_Saudi Arabia,Rotterdam_Netherlands,3534.82,10.37,10.91
+TITAN LEGACY,Jubail_Saudi Arabia,Xiamen_China,5117.84,15.02,15.8
+TITAN LEGACY,Jubail_Saudi Arabia,Kandla_India,1599.42,4.69,4.94
+TITAN LEGACY,Jubail_Saudi Arabia,Port Talbot_Wales,3926.56,11.52,12.12
+TITAN LEGACY,Jubail_Saudi Arabia,Mundra_India,1567.06,4.6,4.84
+TITAN LEGACY,Jubail_Saudi Arabia,Itaguaí_Brazil,8668.56,25.44,26.75
+TITAN LEGACY,Jubail_Saudi Arabia,Jingtang_China,4845.73,14.22,14.96
+TITAN LEGACY,Jubail_Saudi Arabia,Lianyungang_China,4972.22,14.59,15.35
+TITAN LEGACY,Jubail_Saudi Arabia,Krishnapatnam_India,2616.21,7.68,8.07
